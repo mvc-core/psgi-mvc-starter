@@ -1,2 +1,2 @@
 # psgi-mvc-starter
-PSGI MVC starter (Perl/Plack). Mason = full-featured, „batteries included“, TT = lightweight alternative.
+PSGI MVC starter for Perl using Plack. Mason variant is “batteries included” (flexible, powerful), while TT offers a leaner, lightweight alternative.
