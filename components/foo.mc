@@ -13,7 +13,7 @@ Hello <% $self->data->{name} // 'Anonymous' %> 🚗!</h1>
 
 <p>
 %	foreach (keys %{ $self->data->{env} }) {
-		[env] - <% $_ %> = <% $self->data->{env}->{$_} %><br>
+		[env] - <b><% $_ %></b> = <% $self->data->{env}->{$_} %><br>
 %	}
 </p>
 
