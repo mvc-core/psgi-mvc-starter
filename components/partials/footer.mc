@@ -9,7 +9,8 @@ $.data => sub { {} }
 	<a href="/">Start</a> &ndash;
 	<a href="/foo">Foo</a> &ndash;
 	<a href="/subfoo">Sub Foo</a> &ndash;
-	<a href="/subfoo/bar">Sub Foo Bar</a><br><br>
+	<a href="/subfoo/bar">Sub Foo Bar</a> ------
+	<a target="_blank" href="https://github.com/mvc-core/psgi-mvc-starter">GitHub</a><br><br>
 
 	<small>
 %	foreach (sort keys %{ $self->data }) {
