@@ -22,7 +22,7 @@ sub index {
 
     return {
         name    => 'Controller::Subfoo: ' . $value,
-        xy      => "Aus Controller Subfoo mit pid $$",
+        xy      => "Aus dem Controller Subfoo mit pid $$",
         subdata => \%subdata,
     };
 }
