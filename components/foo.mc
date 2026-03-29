@@ -25,7 +25,8 @@ Hello <% $self->data->{name} // 'Anonymous' %> 🚗!</h1>
 
 <div class="text-left columns-2 gap-5">
 %	foreach (sort keys %{ $self->data->{env} }) {
-		[env] - <b><% $_ %></b> = <% substr($self->data->{env}->{$_}, 0, 40) %><br>
+%		next unless length( $self->data->{env}->{$_} );
+		[env] <b><% $_ %></b> = <% substr($self->data->{env}->{$_}, 0, 50) %><br>
 %	}
 </div>
 
