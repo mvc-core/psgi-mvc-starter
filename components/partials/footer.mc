@@ -1,20 +1,22 @@
 <%args>
 $.data => sub { {} }
 </%args>
-<hr>
+<hr class="mb-3">
 <footer>
     Fusszeile &ndash; Session-User: <% $self->data->{_session}{user} // '(nicht eingeloggt)' %>
     &mdash; xy = "<% $self->data->{xy} // '' %>"<br><br>
 
-	<a href="/">Start</a> &ndash;
+    <div class="text-blue-800">
+	<a href="/"><b>Start</b></a> &ndash;
 	<a href="/foo">Foo</a> &ndash;
 	<a href="/subfoo">Sub Foo</a> &ndash;
 	<a href="/subfoo/bar">Sub Foo Bar</a> ------
-	<a target="_blank" href="https://github.com/mvc-core/psgi-mvc-starter">GitHub</a><br><br>
+	[ <a target="_blank" href="https://github.com/mvc-core/psgi-mvc-starter">GitHub</a> ]
+    </div>
 
-	<small>
+	<p class="mt-6 text-left text-sm">
 %	foreach (sort keys %{ $self->data }) {
-		X ------ <% $_ %> = <% $self->data->{$_} %><br>
+		[data] - <b><% $_ %></b> = <% $self->data->{$_} %><br>
 %	}
-	</small>
+	</p>
 </footer>
