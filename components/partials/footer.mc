@@ -1,8 +1,7 @@
 <%args>
 $.data => sub { {} }
 </%args>
-<hr class="mb-3">
-<footer>
+<footer class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 px-4 py-2 z-50">
     Fusszeile &ndash; Session-User: <% $self->data->{_session}{user} // '(nicht eingeloggt)' %>
     &mdash; xy = "<% $self->data->{xy} // '' %>"<br><br>
 
