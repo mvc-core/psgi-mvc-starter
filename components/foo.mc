@@ -27,6 +27,7 @@ $.data => sub { {} }
 <div class="mt-3 text-left columns-2 gap-5 break-all">
 %	foreach (sort keys %{ $self->data->{env} }) {
 %		next unless length( $self->data->{env}->{$_} );
+%		next if /^HTTP_SEC_FETCH_.+/ or /^HTTP_ACCEPT.*/;
 		[env] <b><% $_ %></b> = <% substr($self->data->{env}->{$_}, 0, 100) %><br>
 %	}
 </div>
