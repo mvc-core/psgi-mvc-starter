@@ -17,16 +17,17 @@ $.data => sub { {} }
 <h1 class="fixed top-0 left-0 w-full text-4xl font-bold text-blue-600 bg-gray-100 px-4 py-2 z-50">I am Foo<br>
 Hello <% $self->data->{name} // 'Anonymous' %> 🚗!</h1>
 
-<p class="text-left">
+<p class="text-left mb-3">
 %	foreach (keys %{ $self->data->{_session} }) {
         	[Sess] - <b><% $_ %></b> = <% $self->data->{_session}->{$_} %><br>
 %	}
 </p>
+<hr>
 
-<div class="text-left columns-2 gap-5 break-all">
+<div class="mt-3 text-left columns-2 gap-5 break-all">
 %	foreach (sort keys %{ $self->data->{env} }) {
 %		next unless length( $self->data->{env}->{$_} );
-		[env] <b><% $_ %></b> = <% substr($self->data->{env}->{$_}, 0, 72) %><br>
+		[env] <b><% $_ %></b> = <% substr($self->data->{env}->{$_}, 0, 100) %><br>
 %	}
 </div>
 
