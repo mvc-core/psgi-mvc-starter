@@ -14,7 +14,7 @@ $.data => sub { {} }
 
   <div class="text-center w-full max-w-screen-lg px-4 overflow-x-auto">
 
-<h1>I am Foo<br>
+<h1 class="text-4xl font-bold text-blue-600">I am Foo<br>
 Hello <% $self->data->{name} // 'Anonymous' %> 🚗!</h1>
 
 <p class="text-left">
