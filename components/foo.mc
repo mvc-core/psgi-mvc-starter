@@ -19,7 +19,7 @@ $.data => sub { {} }
 
 <p class="text-left mb-3">
 %	foreach (keys %{ $self->data->{_session} }) {
-        	[Sess] - <b><% $_ %></b> = <% $self->data->{_session}->{$_} %><br>
+        	[Sess] <b><% $_ %></b> = <% $self->data->{_session}->{$_} %><br>
 %	}
 </p>
 <hr>
