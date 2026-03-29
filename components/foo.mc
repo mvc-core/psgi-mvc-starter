@@ -12,7 +12,7 @@ $.data => sub { {} }
 
 <body class="min-h-screen flex items-center justify-center bg-gray-100">
 
-  <div class="text-center">
+  <div class="text-center w-full max-w-screen-lg px-4 overflow-x-auto">
 
 <h1>I am Foo<br>
 Hello <% $self->data->{name} // 'Anonymous' %> 🚗!</h1>
@@ -23,11 +23,11 @@ Hello <% $self->data->{name} // 'Anonymous' %> 🚗!</h1>
 %	}
 </p>
 
-<p class="text-left">
+<div class="text-left columns-2 gap-8">
 %	foreach (keys %{ $self->data->{env} }) {
 		[env] - <b><% $_ %></b> = <% $self->data->{env}->{$_} %><br>
 %	}
-</p>
+</div>
 
 <& partials/footer.mc, data=>$self->data &>
 
