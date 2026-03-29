@@ -8,9 +8,9 @@ my $dbh;
 
 sub get_dbh {
     $dbh //= DBI->connect(
-        'dbi:mysql:dbname=db_local_602151;host=db-603220',
+        "dbi:mysql:dbname=$ENV{DB_NAME};host=$ENV{DB_HOST}",
         'apache',
-        'geHeimXX',
+        $ENV{DB_PASS},
         {
             RaiseError  => 1,
             AutoCommit  => 1,
