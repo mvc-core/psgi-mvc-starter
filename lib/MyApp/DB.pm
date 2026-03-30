@@ -6,18 +6,25 @@ use DBI;
 
 my $dbh;
 
-sub get_dbh {
-    $dbh //= DBI->connect(
+my %CONNECT_ARGS = (
+    RaiseError        => 1,
+    AutoCommit        => 1,
+    PrintError        => 0,
+    mysql_enable_utf8 => 1,
+    mysql_auto_reconnect => 1,
+);
+
+sub _connect {
+    $dbh = DBI->connect(
         "dbi:mysql:dbname=$ENV{DB_NAME};host=$ENV{DB_HOST}",
         'apache',
         $ENV{DB_PASS},
-        {
-            RaiseError  => 1,
-            AutoCommit  => 1,
-            PrintError  => 0,
-            mysql_enable_utf8 => 1,
-        }
+        \%CONNECT_ARGS,
     );
+}
+
+sub get_dbh {
+    _connect() unless $dbh && $dbh->ping;
     return $dbh;
 }
 
