@@ -16,7 +16,7 @@ sub index {
     my ($value) = $dbh->selectrow_array("SELECT firstname FROM users_addr LIMIT 1");
 
     return {
-        name => 'qqq'.$value,
+        name => "$value via Controller Foo",
 	env  => $env,
 	xy   => "hhhDie PID ist jetzt gerade $$ / " . $crypt->encrypt('foo', 'bar')
     };
