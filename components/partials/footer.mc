@@ -10,6 +10,7 @@ $.data => sub { {} }
 	<a href="/foo">Foo</a> &ndash;
 	<a href="/subfoo">Sub Foo</a> &ndash;
 	<a href="/subfoo/bar">Sub Foo Bar</a> &mdash;
+	[ <a href="/api/ping">/api/ping</a> ] &mdash;
 	<span class="text-xs">
 		[ <a target="_blank" href="https://github.com/mvc-core/psgi-mvc-starter">GitHub</a> ]
 	</span>
