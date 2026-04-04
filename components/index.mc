@@ -18,12 +18,7 @@ $.data => sub { {} }
 		Hello <% $self->data->{name} // 'Anonymous' %> 🚗!
 	</h1>
 
-    <p class="mt-4 text-gray-700">Meine erste Tailwind CSS Seite mit CDN.</p>
-
-<%perl>
-use Data::Dumper;
-</%perl>
-<% Dumper $self->data->{_session} %><br>
+    <p class="mt-4 text-gray-700 font-bold">Meine erste Tailwind CSS Seite mit CDN.</p>
 
     <p class="mt-10 text-gray-700 text-left">
 %	foreach (sort keys %{ $self->data }) {
