@@ -2,6 +2,7 @@ package MyApp::Controller::Login;
 
 use strict;
 use warnings;
+use utf8;
 
 use MyApp::DB;
 
@@ -31,7 +32,7 @@ sub index {
         name    => 'Controller::Login: ' . $value,
 	env     => $env,
 	cookies => $cookies,
-        xy      => "Aus dem <b>Controller</b> lib/MyApp/Controller/Login.",
+        xy      => "Frisch aus dem <b>Controller</b> lib/MyApp/Controller/Login.",
         subdata => \%subdata,
     };
 }
