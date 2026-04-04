@@ -22,6 +22,7 @@ sub index {
     
     my $api_endpoint = 'https://psgi.h3.zspace.ch/api/secure';
        $api_endpoint = 'http://localhost/api/secure' if $env->{HTTP_HOST} eq 'psgi.h3.zspace.ch';
+
     (my $user = $params->{user}) =~ tr/ //d;
 
     if ( $user ) {
