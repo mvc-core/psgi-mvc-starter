@@ -1,28 +1,48 @@
 <%args>
 $.data => sub { {} }
 </%args>
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><% $self->data->{env}->{HTTP_HOST} %> | Hallo Welt</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
 
-<h1>I'm Sub-Foo (index)<br>
+<body class="min-h-screen flex items-center justify-center bg-gray-100">
+<div class="text-center">
+
+<h1>I am Sub-Foo (index)<br>
 Hello <% $self->data->{name} // 'Anonymous' %> ??!</h1>
 
-<form method="post" action="/subfoo">
-	<input type="text" name="user">
-	<input type="text" name="pass">
-	<input type="submit" value="Login">
+<form method="post" action="/subfoo" class="flex flex-col gap-3 w-72 mx-auto mt-6">
+	<input type="text" name="user" placeholder="Benutzername"
+		class="rounded-lg border border-gray-300 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+	<input type="password" name="pass" placeholder="Passwort"
+		class="rounded-lg border border-gray-300 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+	<button type="submit"
+		class="rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700 active:bg-blue-800 transition-colors">
+		Login
+	</button>
 </form>
 
 % foreach (keys %{ $self->data->{subdata} }) {
 	[CGI] - <% $_ %> = <% $self->data->{subdata}->{$_} %><br>
 % }
 
-<hr />
+<hr>
 % foreach (keys %{ $self->data->{_session} }) {
 	[Sess] - <b><% $_ %></b> = <% $self->data->{_session}->{$_} %><br>
 % }
 
-<hr />
+<hr>
 % foreach (keys %{ $self->data->{subdata} }) {
 	[subdata] - <b><% $_ %></b> = <% $self->data->{subdata}->{$_} %><br>
 % }
 
 <& partials/footer.mc, data=>$self->data &>
+
+</div>
+</body>
+</html>
