@@ -25,8 +25,8 @@ $.data => sub { {} }
 <hr>
 
 <p class="text-left mb-3">
-%	foreach (keys %{ $self->data->{cookies} }) {
-        	[Cookie] <b><% $_ %></b> = <% $self->data->{cookies}->{$_} %><br>
+%	foreach (sort keys %{ $self->data->{cookies} }) {
+        	[🍪 Cookie] <b><% $_ %></b> = <% $self->data->{cookies}->{$_} %><br>
 %	}
 </p>
 <hr>
