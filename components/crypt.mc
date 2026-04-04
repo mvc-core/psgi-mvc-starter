@@ -20,18 +20,18 @@ $.data => sub { {} }
 <h2 class="text-2xl font-bold">Hello <% $self->data->{name} // 'Anonymous' %>?!</h2>
 
 <form method="post" class="flex flex-col gap-3 w-72 mx-auto mt-6">
-	<input type="text" name="user" placeholder="Benutzername"
+	<input type="text" name="in" placeholder="Input"
 		class="rounded-lg border border-gray-300 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
-	<input type="password" name="pass" placeholder="Passwort"
-		class="rounded-lg border border-gray-300 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+
 	<button type="submit"
 		class="rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700 active:bg-blue-800 transition-colors">
-		Login
+		Encrypt
 	</button>
 </form>
 <br>
 
 <p class="text-left mb-3">
+	Result:
 % foreach (sort keys %{ $self->data->{result} }) {
 	[result / REST API] - <b><% $_ %></b> &larr; <% $self->data->{result}->{$_} %><br>
 % }
