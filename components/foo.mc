@@ -24,6 +24,13 @@ $.data => sub { {} }
 </p>
 <hr>
 
+<p class="text-left mb-3">
+%	foreach (keys %{ $self->data->{cookies} }) {
+        	[Cookie] <b><% $_ %></b> = <% $self->data->{cookies}->{$_} %><br>
+%	}
+</p>
+<hr>
+
 <div class="mt-3 text-left columns-2 gap-5 break-all">
 %	foreach (sort keys %{ $self->data->{env} }) {
 %		next unless length( $self->data->{env}->{$_} );
