@@ -56,7 +56,7 @@ sub decrypt {
         my $ad    = undef; # -- Associated Data (optional)
 
 	push(@msgs, 'XX decrypt: construction');
-	push(@msgs, "XX enc was $args{encrypted}");
+	push(@msgs, "XX enc was $args{encrypted_b64}");
 
 	$res{msg} = join ', ', @msgs;
 
