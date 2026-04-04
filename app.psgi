@@ -179,13 +179,6 @@ builder {
 	    headers => '*',
 	    methods => 'GET,POST,PUT,DELETE,OPTIONS';
 
-        # Optional: einfache Token-Auth
-        # enable 'Plack::Middleware::Auth::Bearer',
-        #     authenticator => sub {
-        #         my ($token) = @_;
-        #         return $token eq 'secret';
-        #     };
-
         $api_app;
     };
 
