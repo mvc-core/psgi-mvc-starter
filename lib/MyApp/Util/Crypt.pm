@@ -21,7 +21,6 @@ sub encrypt {
 	my %args = @_;
 
 	my %res = ();
-
 	my @msgs = ();
 
 	my $plain = $args{plain};
@@ -39,6 +38,23 @@ sub encrypt {
 	do {
 		$res{errmsg} = 'Error E604041';
 	};
+
+	$res{msg} = join ', ', @msgs;
+
+	return \%res;
+}
+
+sub decrypt {
+	my $self = shift;
+
+	my %args = @_;
+
+	my %res = ();
+	my @msgs = ();
+
+        my $key   = $args{key} // '0123456789abcdef0123456789abcdef';
+
+	push(@msgs, 'XX construction');
 
 	$res{msg} = join ', ', @msgs;
 
