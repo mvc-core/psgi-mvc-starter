@@ -15,7 +15,7 @@ $.data => sub { {} }
 
 <h1 class="fixed top-0 left-0 w-full text-3xl font-bold text-blue-600 bg-gray-100 px-4 py-2 z-50">I am Sub-Foo (index)</h1>
 
-<h2 class="text-2xl">Hello <% $self->data->{name} // 'Anonymous' %> ??!</h2>
+<h2 class="text-2xl font-bold">Hello <% $self->data->{name} // 'Anonymous' %>?!</h2>
 
 <form method="post" action="/subfoo" class="flex flex-col gap-3 w-72 mx-auto mt-6">
 	<input type="text" name="user" placeholder="Benutzername"
