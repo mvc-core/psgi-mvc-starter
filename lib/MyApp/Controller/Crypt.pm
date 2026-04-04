@@ -15,7 +15,10 @@ sub index {
 
     if ( $params->{in} ) {
     	$result->{out} = "asdfxx$$";
-	$result->{out2} = MyApp::Util::Crypt->encrypt(in=>'asdfuu');
+
+	$result->{out2} = MyApp::Util::Crypt->encrypt(
+		in => $params->{in}
+	);
     }
 
     return {
