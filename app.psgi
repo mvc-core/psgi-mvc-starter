@@ -108,7 +108,8 @@ my $app = sub {
 
     my $path = $env->{PATH_INFO};
     $path =~ s/\.mc$//;
-    $path = '/index' if $path eq '' || $path eq '/';
+    my $is_root = ($path eq '' || $path eq '/');
+    $path = '/index' if $is_root;
 
     # Statische Assets direkt mit 404 abweisen
     if ($path =~ /\.(ico|css|js|png|jpg|gif|svg|woff2?)$/i) {
@@ -122,8 +123,11 @@ my $app = sub {
     my $req    = Plack::Request->new($env);
     my $params = $req->parameters->as_hashref;
 
+    # Controller-Pfad: bei Root '/' verwenden, damit Home-Controller greift
+    my $dispatch_path = $is_root ? '/' : $mason_path;
+
     # Controller für den aufgelösten Pfad laden ($params und $env weitergeben)
-    my $data = _dispatch_controller($mason_path, $params, $env) // {};
+    my $data = _dispatch_controller($dispatch_path, $params, $env) // {};
 
     # System-Werte eintragen (mit _ als Präfix um Kollisionen zu vermeiden)
     $data->{_path}    = $path;
