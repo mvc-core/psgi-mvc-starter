@@ -22,10 +22,20 @@ $.data => sub { {} }
 
     <p class="mt-4 text-gray-700 font-bold">Meine erste Tailwind CSS Seite mit CDN.</p>
 
-    <h3 class="mt-3">Funktionen</h3>
-    <ul>
-    <li><a href="/login">Login</a>
-    <li><a href="/foo">Testfunktion</a>
+    <h3 class="mt-6 mb-3 text-lg font-semibold text-gray-600 uppercase tracking-wider">Funktionen</h3>
+    <ul class="flex flex-col gap-2 w-56 mx-auto">
+      <li>
+        <a href="/login"
+           class="flex items-center gap-2 rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700 transition-colors shadow-sm">
+          <span class="text-blue-500">&#9654;</span> Login
+        </a>
+      </li>
+      <li>
+        <a href="/foo"
+           class="flex items-center gap-2 rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700 transition-colors shadow-sm">
+          <span class="text-blue-500">&#9654;</span> Testfunktion
+        </a>
+      </li>
     </ul>
 
     <p class="mt-10 text-gray-700 text-left">
