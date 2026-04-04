@@ -32,8 +32,8 @@ $.data => sub { {} }
 <br>
 
 <p class="text-left mb-3">
-% foreach (keys %{ $self->data->{result} }) {
-	[result / REST API] - <b><% $_ %></b> = <% $self->data->{result}->{$_} %><br>
+% foreach (sort keys %{ $self->data->{result} }) {
+	[result / REST API] - <b><% $_ %></b> &larr; <% $self->data->{result}->{$_} %><br>
 % }
 </p>
 <hr>
