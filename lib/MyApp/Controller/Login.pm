@@ -17,12 +17,13 @@ sub index {
     my ($value) = $dbh->selectrow_array("SELECT firstname FROM users_addr LIMIT 1");
 
     my $result;
+    my $token = 'secret';
 
     my $ua  = LWP::UserAgent->new;
     my $req = HTTP::Request->new(
         POST => 'https://psgi.h3.zspace.ch/api/secure',
         [
-            'Authorization' => 'Bearer secret',
+            'Authorization' => "Bearer $token",
             'Content-Type'  => 'application/json',
         ],
         encode_json({ user => $params->{user}, password => $params->{pass} }),
@@ -34,9 +35,6 @@ sub index {
     if ( $params->{user} ) {
         $session->{user} = $params->{user};
     }
-
-    # XXX Übermittelte Formular-Parameter für Template-Ausgabe
-    # XXX my %subdata = %{ $params // {} };
 
     my %cookies = map {
         my ($k, $v) = split /=/, $_, 2;
@@ -50,7 +48,7 @@ sub index {
 	env     => $env,
 	cookies => $cookies,
 	result  => $result,
-        xy      => "Frisch vom <b>Controller</b> lib/MyApp/Controller/Login. $params->{user}"
+        xy      => "Frisch v/<b>Controller</b> lib/MyApp/Controller/Login. $params->{user}"
     };
 }
 
