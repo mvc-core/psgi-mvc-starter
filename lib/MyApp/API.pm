@@ -22,7 +22,7 @@ post '/secure' => sub {
     return send_error('Forbidden', 403)
         unless $token eq 'secret';
 
-    return { ok => 1 };
+    return { ok => 1, foo => "bar$$" };
 };
 
 1;
