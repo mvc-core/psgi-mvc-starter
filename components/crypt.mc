@@ -20,7 +20,7 @@ $.data => sub { {} }
 <h2 class="text-2xl font-bold">Hello <% $self->data->{name} // 'Anonymous' %>?!</h2>
 
 <form method="post" class="flex flex-col gap-3 w-72 mx-auto mt-6">
-	<input type="text" name="in" placeholder="Input"
+	<input type="text" name="in" placeholder="Input" value="asdf"
 		class="rounded-lg border border-gray-300 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
 
 	<button type="submit"
@@ -31,15 +31,13 @@ $.data => sub { {} }
 <br>
 
 <p class="text-left mb-3">
-% # XXX use Data::Dumper;
-% # XXX Result (out): <% Dumper $self->data->{result}->{out} %><br>
 % foreach (sort keys %{ $self->data->{result} }) {
 	[result] - <b><% $_ %></b> &larr; <% $self->data->{result}->{$_} %><br>
 % }
 
 %	foreach (sort keys %{ $self->data->{result}->{out} }) {
 %		next if $_ eq 'encrypted';
-		XX ----- <b><% $_ %></b> = <% $self->data->{result}->{out}->{$_} %><br>
+		[result / out ] - <b><% $_ %></b> = <% $self->data->{result}->{out}->{$_} %><br>
 %	}
 </p>
 <hr>
