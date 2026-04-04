@@ -22,21 +22,29 @@ sub encrypt {
 
 	my %res = ();
 
+	my @msgs = ();
+
 	my $plain = $args{plain};
         my $key   = $args{key} // '0123456789abcdef0123456789abcdef';
 
         my $nonce = pack("H*", '000000000000000000000000'); # -- 12 Byte (96 bit)
         my $ad    = undef; # -- Associated Data (optional)
 
+	push(@msgs, "key: $key");
+
 	eval {
 		$res{encrypted}        = crypto_aead_chacha20poly1305_ietf_encrypt($plain, $ad, $nonce, $key);
 		$res{encrypted_base64} = encode_base64($res{encrypted}, '');
 	} or
-	do {};
+	do {
+		$res{errmsg} = 'Error E604041';
+	};
 
-	$res{message} = "Plain input was $plain";
-	$res{out}     = "tbd$$";
-	$res{aha}     = "604041xy\-$plain";
+	$res{msg} = join ', ', @msgs;
+
+	# XX $res{message} = "Plain input was $plain";
+	# XXX $res{out}     = "tbd$$";
+	# XXX $res{aha}     = "604041xy\-$plain";
 
 	return \%res;
 }
