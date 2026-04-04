@@ -14,11 +14,12 @@ $.data => sub { {} }
 
   <div class="text-center">
 
-<h1>I am Subfoo / Bar<br>
-Hello <% $self->data->{name} // 'Anonymous' %> ??!</h1>
+<h1 class="fixed top-0 left-0 w-full text-3xl font-bold text-blue-600 bg-gray-100 px-4 py-2 z-50">I am Subfoo / Bar</h1>
 
-<p>
-	<a href="/">Start</a>
+<h2 class="text-2xl font-bold text-blue-600">Hello <% $self->data->{name} // 'Anonymous' %></h2>
+
+<p class="mt-6">
+	<a href="/">Back to Start</a>
 </p>
 
 <dl class="mt-6 text-left text-sm divide-y divide-gray-200 border border-gray-200 rounded-lg overflow-hidden w-full max-w-2xl mx-auto">
