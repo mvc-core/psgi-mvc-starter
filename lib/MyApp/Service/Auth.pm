@@ -15,7 +15,10 @@ sub _test {
 }
 
 sub _is_logged_in {
-	my $is_logged_in = 98;
+	# my ($params, $env) = @_;
+    	# my $session = $env->{'psgix.session'};
+
+	my $is_logged_in = 97; # -- $session->{is_logged_in}
 
 	return $is_logged_in;
 }
