@@ -14,10 +14,13 @@ sub index {
     my $result;
 
     if ( $params->{in} ) {
-	    # XXX $result->{out} = "asdfxx$$";
-
 	$result->{out} = MyApp::Util::Crypt->encrypt(
 		plain => $params->{in} // 'foo'
+	);
+    }
+    elsif ( $params->{enc} ) {
+	$result->{out} = MyApp::Util::Crypt->decrypt(
+		encrypted_b64 => $params->{enc}
 	);
     }
 
