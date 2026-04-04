@@ -20,8 +20,9 @@ sub index {
     my $token = 'secret';
     my $api_endpoint = 'https://psgi.h3.zspace.ch/api/secure';
        $api_endpoint = 'http://localhost/api/secure' if $env->{HTTP_HOST} eq 'psgi.h3.zspace.ch';
+    (my $user = $params->{user}) =~ tr/ //d;
 
-    if ( $params->{user} ) {
+    if ( $user ) {
         my $ua  = LWP::UserAgent->new;
         my $req = HTTP::Request->new(
             POST => $api_endpoint,
@@ -37,10 +38,6 @@ sub index {
         } else {
             $result = { errmsg => $res->status_line };
         }
-    }
-
-    # Formular abgeschickt: User in Session speichern
-    if ( $params->{user} ) {
         $session->{user} = $params->{user};
     }
 
