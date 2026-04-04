@@ -30,7 +30,7 @@ sub encrypt {
         my $nonce = pack("H*", '000000000000000000000000'); # -- 12 Byte (96 bit)
         my $ad    = undef; # -- Associated Data (optional)
 
-	push(@msgs, "key: $key");
+	push(@msgs, "plain: $plain, key: $key");
 
 	eval {
 		$res{encrypted}        = crypto_aead_chacha20poly1305_ietf_encrypt($plain, $ad, $nonce, $key);
@@ -41,10 +41,6 @@ sub encrypt {
 	};
 
 	$res{msg} = join ', ', @msgs;
-
-	# XX $res{message} = "Plain input was $plain";
-	# XXX $res{out}     = "tbd$$";
-	# XXX $res{aha}     = "604041xy\-$plain";
 
 	return \%res;
 }

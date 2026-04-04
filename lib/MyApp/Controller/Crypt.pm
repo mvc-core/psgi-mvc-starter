@@ -17,7 +17,7 @@ sub index {
     	$result->{out} = "asdfxx$$";
 
 	$result->{out2} = MyApp::Util::Crypt->encrypt(
-		in => $params->{in}
+		plain => $params->{in} // 'foo'
 	);
     }
 
