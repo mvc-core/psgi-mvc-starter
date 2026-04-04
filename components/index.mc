@@ -27,7 +27,7 @@ use Data::Dumper;
 
     <p class="mt-10 text-gray-700 text-left">QQQ hoe
 % foreach (sort keys %{ $self->data->{env} }) {
-		XXX <% $_ %><br>
+% # XXX		XXX <% $_ %><br>
 %	}
 <br>
 %	foreach (sort keys %{ $self->data }) {
