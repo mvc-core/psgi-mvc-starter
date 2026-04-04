@@ -22,6 +22,12 @@ $.data => sub { {} }
 
     <p class="mt-4 text-gray-700 font-bold">Meine erste Tailwind CSS Seite mit CDN.</p>
 
+    <h3 class="mt-3">Funktionen</h3>
+    <ul>
+    <li><a href="/login">Login</a>
+    <li><a href="/foo">Testfunktion</a>
+    </ul>
+
     <p class="mt-10 text-gray-700 text-left">
 %	foreach (sort keys %{ $self->data }) {
 		[data] - <b><% $_ %></b> = <% $self->data->{$_} %><br>
