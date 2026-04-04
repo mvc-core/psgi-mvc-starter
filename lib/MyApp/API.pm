@@ -22,7 +22,17 @@ post '/secure' => sub {
     return send_error('Forbidden', 403)
         unless $token eq 'secret';
 
-    return { ok => 1, foo => "bar$$" };
+    # JSON-Payload holen
+    my $data = request->data;
+
+    return send_error('Invalid JSON', 400)
+        unless $data && ref $data eq 'HASH';
+
+    # Optional einzelne Felder extrahieren
+    my $user     = $data->{user};
+    my $password = $data->{password};
+
+    return { ok => 1, msg => "Username was $user, PID $$" };
 };
 
 1;
