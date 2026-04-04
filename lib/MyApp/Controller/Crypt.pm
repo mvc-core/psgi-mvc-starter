@@ -4,8 +4,7 @@ use strict;
 use warnings;
 use utf8;
 
-# use MyApp::DB;
-# XX use JSON qw(encode_json decode_json);
+use MyApp::Util::Crypt;
 
 sub index {
     my ($params, $env) = @_;
@@ -16,6 +15,7 @@ sub index {
 
     if ( $params->{in} ) {
     	$result->{out} = "asdfxx$$";
+	$result->{out2} = MyApp::Util::Crypt->encrypt(in=>'asdfuu');
     }
 
     return {
