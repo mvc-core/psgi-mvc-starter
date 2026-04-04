@@ -20,7 +20,7 @@ $.data => sub { {} }
 <h2 class="text-2xl font-bold">Hello <% $self->data->{name} // 'Anonymous' %>?!</h2>
 
 <form method="post" class="flex flex-col gap-3 w-72 mx-auto mt-6">
-	<input type="text" name="in" placeholder="Input" value="asdf"
+	<input type="text" name="in" placeholder="Input" value="<% $self->data->{cgi}->{in} %>"
 		class="rounded-lg border border-gray-300 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
 
 	<button type="submit"
