@@ -46,7 +46,7 @@ post '/secure' => sub {
     return {
         ok  => 1,
         api_version => 0.8001,
-        msg => "Username was $user, PID $$, Req from $tenant, resp from $ENV{HOSTNAME}"
+        msg => "Username was $user, PID $$, Req from tenant $tenant, resp from $ENV{HOSTNAME}"
     };
 };
 
