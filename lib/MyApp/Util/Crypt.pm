@@ -56,16 +56,14 @@ sub decrypt {
         my $ad    = undef; # -- Associated Data (optional)
 
 	eval {
-		# -------- Decryption from base 64 encoded argument $args{encrypted_b64} here:
-		# XX Bitte Programmcode in diesem eval-Block vervollständigen
-		$res{decrypted} = 'XX-constr-XX';
+		my $ciphertext  = decode_base64($args{encrypted_b64});
+		$res{decrypted} = crypto_aead_chacha20poly1305_ietf_decrypt($ciphertext, $ad, $nonce, $key);
 	} or
 	do {
 		$res{errmsg} = 'Error E604041-63';
 	};
 
-	push(@msgs, 'XX decrypt: construction');
-	push(@msgs, "XX enc was $args{encrypted_b64}");
+	push(@msgs, "decrypt: encrypted_b64=$args{encrypted_b64}");
 
 	$res{msg} = join ', ', @msgs;
 
