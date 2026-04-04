@@ -31,9 +31,10 @@ $.data => sub { {} }
 <br>
 
 <p class="text-left mb-3">
-	Result:
+% use Data::Dumper;
+Result: <% Dumper $self->data->{result}->{out2} %><br>
 % foreach (sort keys %{ $self->data->{result} }) {
-	[result / REST API] - <b><% $_ %></b> &larr; <% $self->data->{result}->{$_} %><br>
+	[result] - <b><% $_ %></b> &larr; <% $self->data->{result}->{$_} %><br>
 % }
 </p>
 <hr>

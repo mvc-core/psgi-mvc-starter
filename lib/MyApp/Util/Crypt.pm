@@ -4,10 +4,9 @@ use strict;
 use utf8;
 use warnings;
 
-# XXX my $dbh;
-# XX my $dbh_pid;
-
 sub encrypt {
+	my $self = shift;
+
 	my %args = @_;
 
 	my $in = $args{in};
