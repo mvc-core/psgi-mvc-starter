@@ -6,7 +6,7 @@ $.data => sub { {} }
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hallo Welt</title>
+  <title><% $self->data->{env}->{HTTP_HOST} %> | Hallo Welt</title>
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
@@ -20,7 +20,16 @@ $.data => sub { {} }
 
     <p class="mt-4 text-gray-700">Meine erste Tailwind CSS Seite mit CDN.</p>
 
-    <p class="mt-10 text-gray-700 text-left">
+<%perl>
+use Data::Dumper;
+</%perl>
+<% Dumper $self->data->{_session} %><br>
+
+    <p class="mt-10 text-gray-700 text-left">QQQ hoe
+% foreach (sort keys %{ $self->data->{env} }) {
+		XXX <% $_ %><br>
+%	}
+<br>
 %	foreach (sort keys %{ $self->data }) {
 		[data] - <b><% $_ %></b> = <% $self->data->{$_} %><br>
 %	}
