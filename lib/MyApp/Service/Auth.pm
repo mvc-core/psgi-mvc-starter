@@ -8,9 +8,6 @@ use warnings;
 my $dbh;
 my $dbh_pid;
 
-# XXX my %CONNECT_ARGS = (
-# XXX );
-
 sub _test {
 	my %foo = (
 		aha => '604041xy'
@@ -18,7 +15,9 @@ sub _test {
 	return \%foo;
 }
 
-# sub get_dbh {
-# }
+sub _is_logged_in {
+	my $is_logged_in = 99;
+	return $is_logged_in;
+}
 
 1;
