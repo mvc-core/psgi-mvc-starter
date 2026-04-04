@@ -21,20 +21,22 @@ sub index {
     my $api_endpoint = 'https://psgi.h3.zspace.ch/api/secure';
        $api_endpoint = 'http://localhost/api/secure' if $env->{HTTP_HOST} eq 'psgi.h3.zspace.ch';
 
-    my $ua  = LWP::UserAgent->new;
-    my $req = HTTP::Request->new(
-        POST => $api_endpoint,
-        [
-            'Authorization' => "Bearer $token",
-            'Content-Type'  => 'application/json',
-        ],
-        encode_json({ user => $params->{user}, password => $params->{pass}, tenant => $env->{HTTP_HOST} })
-    );
-    my $res = $ua->request($req);
-    if ($res->is_success) {
-        $result = decode_json($res->decoded_content);
-    } else {
-        $result = { errmsg => $res->status_line };
+    if ( $params->{user} ) {
+        my $ua  = LWP::UserAgent->new;
+        my $req = HTTP::Request->new(
+            POST => $api_endpoint,
+            [
+                'Authorization' => "Bearer $token",
+                'Content-Type'  => 'application/json',
+            ],
+            encode_json({ user => $params->{user}, password => $params->{pass}, tenant => $env->{HTTP_HOST} })
+        );
+        my $res = $ua->request($req);
+        if ($res->is_success) {
+            $result = decode_json($res->decoded_content);
+        } else {
+            $result = { errmsg => $res->status_line };
+        }
     }
 
     # Formular abgeschickt: User in Session speichern
