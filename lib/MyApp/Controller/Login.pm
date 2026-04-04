@@ -41,9 +41,9 @@ sub index {
             $result = { errmsg => $res->status_line };
         }
         $session->{user} = $params->{user};
+        $session->{is_logged_in} = 42;
     }
 
-    # XX $result->{foo604041} = MyApp::Service::Auth::_test();
     $result->{XX_is_logged_in} = MyApp::Service::Auth::_is_logged_in();
 
     my %cookies = map {
