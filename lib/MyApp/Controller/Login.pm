@@ -26,7 +26,7 @@ sub index {
             'Authorization' => "Bearer $token",
             'Content-Type'  => 'application/json',
         ],
-        encode_json({ user => $params->{user}, password => $params->{pass} }),
+        encode_json({ user => $params->{user}, password => $params->{pass}, tenant => $env->{HTTP_HOST} || 'hoe' })
     );
     my $res = $ua->request($req);
     $result = decode_json($res->decoded_content) if $res->is_success;
@@ -45,9 +45,9 @@ sub index {
 
     return {
         name    => 'Controller::Login: ' . $value,
-	env     => $env,
-	cookies => $cookies,
-	result  => $result,
+	    env     => $env,
+	    cookies => $cookies,
+	    result  => $result,
         xy      => "Frisch v/<b>Controller</b> lib/MyApp/Controller/Login. $params->{user}"
     };
 }
