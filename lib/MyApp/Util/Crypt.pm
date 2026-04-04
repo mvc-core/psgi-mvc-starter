@@ -25,7 +25,6 @@ sub encrypt {
 
 	my $plain = $args{plain};
         my $key   = $args{key} // '0123456789abcdef0123456789abcdef';
-
         my $nonce = pack("H*", '000000000000000000000000'); # -- 12 Byte (96 bit)
         my $ad    = undef; # -- Associated Data (optional)
 
@@ -53,8 +52,11 @@ sub decrypt {
 	my @msgs = ();
 
         my $key   = $args{key} // '0123456789abcdef0123456789abcdef';
+        my $nonce = pack("H*", '000000000000000000000000'); # -- 12 Byte (96 bit)
+        my $ad    = undef; # -- Associated Data (optional)
 
-	push(@msgs, 'XX construction');
+	push(@msgs, 'XX decrypt: construction');
+	push(@msgs, "XX enc was $args{encrypted}");
 
 	$res{msg} = join ', ', @msgs;
 
