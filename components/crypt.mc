@@ -14,7 +14,7 @@ $.data => sub { {} }
 <div class="text-center">
 
 <h1 class="fixed top-10 left-0 w-full text-3xl font-bold text-blue-600 bg-gray-100 px-4 py-2 z-50">
-	Crypt
+	🔒 Crypt
 </h1>
 
 <h2 class="text-2xl font-bold">Hello <% $self->data->{name} // 'Anonymous' %>?!</h2>
