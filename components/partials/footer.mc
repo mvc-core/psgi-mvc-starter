@@ -8,6 +8,7 @@ $.data => sub { {} }
     <div class="text-blue-800">
 	<a href="/"><b>Start</b></a> &ndash;
 	<a href="/login">Login</a> &ndash;
+	<a href="/logout">Logout</a> &ndash;
 	<a href="/foo">Foo</a> &ndash;
 	<a href="/subfoo">Subfoo</a> &ndash;
 	<a href="/subfoo/bar">Subfoo/Bar</a>/<a href="/subfoo/bar/4321"><sup>+</sup></a> &mdash;
