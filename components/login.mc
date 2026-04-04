@@ -46,8 +46,8 @@ $.data => sub { {} }
 % }
 
 <hr>
-% foreach (keys %{ $self->data->{subdata} }) {
-	[subdata] - <b><% $_ %></b> = <% $self->data->{subdata}->{$_} %><br>
+% foreach (keys %{ $self->data->{result} }) {
+	[result] - <b><% $_ %></b> = <% $self->data->{result}->{$_} %><br>
 % }
 
 <& partials/footer.mc, data=>$self->data &>
