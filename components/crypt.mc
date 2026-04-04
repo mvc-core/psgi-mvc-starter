@@ -31,14 +31,15 @@ $.data => sub { {} }
 <br>
 
 <p class="text-left mb-3">
-% use Data::Dumper;
-Result (out): <% Dumper $self->data->{result}->{out} %><br>
+% # XXX use Data::Dumper;
+% # XXX Result (out): <% Dumper $self->data->{result}->{out} %><br>
 % foreach (sort keys %{ $self->data->{result} }) {
 	[result] - <b><% $_ %></b> &larr; <% $self->data->{result}->{$_} %><br>
 % }
 
 %	foreach (sort keys %{ $self->data->{result}->{out} }) {
-		XX ----- <% $_ %> = <% $self->data->{result}->{out}->{$_} %><br>
+%		next if $_ eq 'encrypted';
+		XX ----- <b><% $_ %></b> = <% $self->data->{result}->{out}->{$_} %><br>
 %	}
 </p>
 <hr>
