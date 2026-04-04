@@ -41,7 +41,7 @@ post '/secure' => sub {
     # Optional einzelne Felder extrahieren
     my $user     = $data->{user};
     my $password = $data->{password};
-    my $tenant   = $data->{tenant};
+    my $tenant   = $data->{tenant} // '* No tenant *';
 
     return {
         ok  => 1,
