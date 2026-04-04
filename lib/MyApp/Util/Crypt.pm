@@ -57,7 +57,8 @@ sub decrypt {
 
 	eval {
 		# -------- Decryption from base 64 encoded argument $args{encrypted_b64} here:
-		$res{decrypted} = 'XX-constr';
+		# XX Bitte Programmcode in diesem eval-Block vervollständigen
+		$res{decrypted} = 'XX-constr-XX';
 	} or
 	do {
 		$res{errmsg} = 'Error E604041-63';
