@@ -41,10 +41,11 @@ post '/secure' => sub {
     # Optional einzelne Felder extrahieren
     my $user     = $data->{user};
     my $password = $data->{password};
+    my $tenant   = $data->{tenant};
 
     return {
         ok  => 1,
-        msg => "Username was $user, PID $$, $ENV{HOSTNAME}"
+        msg => "Username was $user, PID $$, Req from $tenant, resp from $ENV{HOSTNAME}"
     };
 };
 
