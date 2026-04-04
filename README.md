@@ -23,6 +23,18 @@ lib/MyApp/
 └── Mason.pm             # Mason-Konfiguration (bereits vorhanden)
 ```
 
+## API Usage
+
+```console
+TOKEN='secret'
+
+curl -X POST \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"user":"foo.admin","password":"yoursecret"}' \
+  http://localhost/api/secure
+```
+
 ## Dependencies
 
 ```console
