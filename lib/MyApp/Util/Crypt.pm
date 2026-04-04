@@ -55,6 +55,14 @@ sub decrypt {
         my $nonce = pack("H*", '000000000000000000000000'); # -- 12 Byte (96 bit)
         my $ad    = undef; # -- Associated Data (optional)
 
+	eval {
+		# -------- Decryption from base 64 encoded argument $args{encrypted_b64} here:
+		$res{decrypted} = 'XX-constr';
+	} or
+	do {
+		$res{errmsg} = 'Error E604041-63';
+	};
+
 	push(@msgs, 'XX decrypt: construction');
 	push(@msgs, "XX enc was $args{encrypted_b64}");
 
