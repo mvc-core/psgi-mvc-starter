@@ -17,7 +17,12 @@ Hello <% $self->data->{name} // 'Anonymous' %> ??!</h1>
 
 <hr />
 % foreach (keys %{ $self->data->{_session} }) {
-	[Sess] - <% $_ %> = <% $self->data->{_session}->{$_} %><br>
+	[Sess] - <b><% $_ %></b> = <% $self->data->{_session}->{$_} %><br>
+% }
+
+<hr />
+% foreach (keys %{ $self->data->{subdata} }) {
+	[subdata] - <b><% $_ %></b> = <% $self->data->{subdata}->{$_} %><br>
 % }
 
 <& partials/footer.mc, data=>$self->data &>
