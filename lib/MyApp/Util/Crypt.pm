@@ -11,11 +11,13 @@ sub encrypt {
 
 	my $in = $args{in};
 
-	my %foo = (
-		aha => "604041xy\-$in"
+	my %res = (
+		message => "Input was $in",
+		out     => "tbd$$",
+		aha     => "604041xy\-$in"
 	);
 
-	return \%foo;
+	return \%res;
 }
 
 1;
