@@ -22,3 +22,9 @@ lib/MyApp/
 ├── DB.pm                # Datenbankverbindung (bereits vorhanden)
 └── Mason.pm             # Mason-Konfiguration (bereits vorhanden)
 ```
+
+## Dependencies
+
+```console
+apt install libdancer2-perl libjson-maybexs-perl
+```
