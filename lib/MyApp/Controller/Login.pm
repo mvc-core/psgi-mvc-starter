@@ -35,8 +35,8 @@ sub index {
         $session->{user} = $params->{user};
     }
 
-    # Übermittelte Formular-Parameter für Template-Ausgabe
-    my %subdata = %{ $params // {} };
+    # XXX Übermittelte Formular-Parameter für Template-Ausgabe
+    # XXX my %subdata = %{ $params // {} };
 
     my %cookies = map {
         my ($k, $v) = split /=/, $_, 2;
@@ -50,8 +50,7 @@ sub index {
 	env     => $env,
 	cookies => $cookies,
 	result  => $result,
-        xy      => "Frisch aus dem <b>Controller</b> lib/MyApp/Controller/Login. $params->{user}",
-        subdata => \%subdata,
+        xy      => "Frisch vom <b>Controller</b> lib/MyApp/Controller/Login. $params->{user}"
     };
 }
 
