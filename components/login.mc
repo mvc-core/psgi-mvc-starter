@@ -34,6 +34,13 @@ $.data => sub { {} }
 % }
 
 <hr>
+<p class="text-left mb-3">
+%       foreach (sort keys %{ $self->data->{cookies} }) {
+                [🍪 Cookie] <b><% $_ %></b> = <% substr($self->data->{cookies}->{$_}, 0, 110) %><br>
+%       }
+</p>
+
+<hr>
 % foreach (keys %{ $self->data->{_session} }) {
 	[Sess] - <b><% $_ %></b> = <% $self->data->{_session}->{$_} %><br>
 % }
