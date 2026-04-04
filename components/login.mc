@@ -32,9 +32,8 @@ $.data => sub { {} }
 <br>
 
 <p class="text-left mb-3">
-% # XXX	XX <% $self->data->{result}->{foo604041}->{aha} %><br>
 % foreach (sort keys %{ $self->data->{result} }) {
-	[result / REST API] - <b><% $_ %></b> &larr; <% $self->data->{result}->{$_} %><br>
+	[result / REST API] - <b><% $_ %></b> &larr; <tt class="text-lg"><% $self->data->{result}->{$_} %></tt><br>
 % }
 </p>
 <hr>
