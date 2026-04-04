@@ -21,10 +21,15 @@ Hello <% $self->data->{name} // 'Anonymous' %> ??!</h1>
 	<a href="/">Start</a>
 </p>
 
+<dl class="mt-6 text-left text-sm divide-y divide-gray-200 border border-gray-200 rounded-lg overflow-hidden w-full max-w-2xl mx-auto">
 % foreach (sort keys %ENV) {
 %	next if /pass/i;
-	&bull; <b><% $_ %></b> = <% $ENV{$_} %><br>
+  <div class="flex gap-2 px-4 py-2 even:bg-gray-50 hover:bg-blue-50 transition-colors">
+    <dt class="font-semibold text-gray-700 shrink-0 w-56 truncate"><% $_ %></dt>
+    <dd class="text-gray-500 truncate"><% $ENV{$_} %></dd>
+  </div>
 % }
+</dl>
 
 <& partials/footer.mc, data=>$self->data &>
 
