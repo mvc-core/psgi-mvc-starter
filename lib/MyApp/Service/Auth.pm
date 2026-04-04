@@ -3,10 +3,9 @@ package MyApp::Service::Auth;
 use strict;
 use utf8;
 use warnings;
-# XX use DBI;
 
-my $dbh;
-my $dbh_pid;
+# XX my $dbh;
+# XX my $dbh_pid;
 
 sub _test {
 	my %foo = (
@@ -16,7 +15,8 @@ sub _test {
 }
 
 sub _is_logged_in {
-	my $is_logged_in = 99;
+	my $is_logged_in = 98;
+
 	return $is_logged_in;
 }
 
