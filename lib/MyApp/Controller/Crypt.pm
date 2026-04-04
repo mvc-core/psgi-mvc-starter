@@ -24,6 +24,7 @@ sub index {
     return {
         name    => 'Controller::Crypt',
 	env     => $env,
+	cgi     => $params,
 	result  => $result,
 	xy      => "Frisch v/<b>Controller</b> lib/MyApp/Controller/Crypt. $params->{in}"
     };

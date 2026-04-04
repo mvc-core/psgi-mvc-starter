@@ -53,6 +53,10 @@ $.data => sub { {} }
 	[Sess] - <b><% $_ %></b> = <% $self->data->{_session}->{$_} %><br>
 % }
 
+% foreach (sort keys %{ $self->data->{cgi} }) {
+	[cgi] - <% $_ %> = <% $self->data->{cgi}->{$_} %><br>
+% }
+
 <& partials/footer.mc, data=>$self->data &>
 
 </div>
