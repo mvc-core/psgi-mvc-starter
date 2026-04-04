@@ -10,6 +10,10 @@ use Plack::Builder;
 use Plack::Session::Store::File;
 use Plack::Session::State::Cookie;
 
+use MyApp::API; # Dancer2 API
+# Dancer2 API App
+my $api_app = MyApp::API->to_app;
+
 # $current_output is set per-request via local() below.
 # The out_method closure writes into it, making output capture safe
 # für preforking servers like Starman (jeder Worker ist ein eigener Prozess).
@@ -159,13 +163,42 @@ my $app = sub {
 # Middleware-Stack
 # ---------------------------------------------------------------------------
 builder {
-    enable 'Session',
-        store => Plack::Session::Store::File->new(
-            dir => '/tmp/myapp-sessions'
-        ),
-        state => Plack::Session::State::Cookie->new(
-            session_key => 'myapp_sid',
-            httponly    => 1,
-        );
-    $app;
+    # -----------------------------
+    # API (separat gemountet)
+    # -----------------------------
+    mount "/api" => builder {
+
+        enable 'Plack::Middleware::ContentLength';
+
+	# enable 'Plack::Middleware::CrossOrigin',
+	#    origins => '*',
+	#    headers => '*',
+	#    methods => 'GET,POST,PUT,DELETE,OPTIONS';
+
+        # Optional: einfache Token-Auth
+        # enable 'Plack::Middleware::Auth::Bearer',
+        #     authenticator => sub {
+        #         my ($token) = @_;
+        #         return $token eq 'secret';
+        #     };
+
+        $api_app;
+    };
+
+    # -----------------------------
+    # Haupt-App (Mason)
+    # -----------------------------
+    mount "/" => builder {
+
+        enable 'Session',
+            store => Plack::Session::Store::File->new(
+                dir => '/tmp/myapp-sessions'
+            ),
+            state => Plack::Session::State::Cookie->new(
+                session_key => 'myapp_sid',
+                httponly    => 1,
+            );
+
+        $app;
+    };
 };
