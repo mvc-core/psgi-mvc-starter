@@ -8,6 +8,7 @@ use MyApp::DB;
 use LWP::UserAgent;
 use HTTP::Request;
 use JSON qw(encode_json decode_json);
+use MyApp::Service::Auth;
 
 sub index {
     my ($params, $env) = @_;
@@ -18,6 +19,7 @@ sub index {
 
     my $result;
     my $token = 'secret';
+    
     my $api_endpoint = 'https://psgi.h3.zspace.ch/api/secure';
        $api_endpoint = 'http://localhost/api/secure' if $env->{HTTP_HOST} eq 'psgi.h3.zspace.ch';
     (my $user = $params->{user}) =~ tr/ //d;
@@ -41,6 +43,8 @@ sub index {
         $session->{user} = $params->{user};
     }
 
+    $result->{foo604041} = MyApp::Service::Auth::_test();
+
     my %cookies = map {
         my ($k, $v) = split /=/, $_, 2;
         $k =~ s/^\s+|\s+$//g;
@@ -50,10 +54,10 @@ sub index {
 
     return {
         name    => 'Controller::Login: ' . $value,
-	    env     => $env,
-	    cookies => $cookies,
-	    result  => $result,
-        xy      => "Frisch v/<b>Controller</b> lib/MyApp/Controller/Login. $params->{user}"
+	env     => $env,
+	cookies => $cookies,
+	result  => $result,
+	xy      => "Frisch v/<b>Controller</b> lib/MyApp/Controller/Login. $params->{user}"
     };
 }
 
