@@ -39,15 +39,14 @@ $.data => sub { {} }
 <hr>
 
 <p class="text-left mb-3">
+%	foreach (keys %{ $self->data->{_session} }) {
+		[Sess] - <b><% $_ %></b> = <% $self->data->{_session}->{$_} %><br>
+%	}
+<br>
 %       foreach (sort keys %{ $self->data->{cookies} }) {
                 [🍪 Cookie] <b><% $_ %></b> = <% substr($self->data->{cookies}->{$_}, 0, 66) %><br>
 %       }
 </p>
-
-<hr>
-% foreach (keys %{ $self->data->{_session} }) {
-	[Sess] - <b><% $_ %></b> = <% $self->data->{_session}->{$_} %><br>
-% }
 
 <& partials/footer.mc, data=>$self->data &>
 
