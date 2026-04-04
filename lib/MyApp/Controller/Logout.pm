@@ -1,0 +1,50 @@
+package MyApp::Controller::Logout;
+
+use strict;
+use warnings;
+use utf8;
+
+use MyApp::DB;
+use LWP::UserAgent;
+use HTTP::Request;
+use JSON qw(encode_json decode_json);
+use MyApp::Service::Auth;
+
+sub index {
+    my ($params, $env) = @_;
+
+    my $session = $env->{'psgix.session'};
+    my $dbh     = MyApp::DB::get_dbh();
+    my ($value) = $dbh->selectrow_array("SELECT firstname FROM users_addr LIMIT 1");
+
+    $session->{is_logged_in} = 0;
+
+    my $result;
+    my $token = 'secret';
+    
+    my $api_endpoint = 'https://psgi.h3.zspace.ch/api/secure';
+       $api_endpoint = 'http://localhost/api/secure' if $env->{HTTP_HOST} eq 'psgi.h3.zspace.ch';
+    (my $user = $params->{user}) =~ tr/ //d;
+
+    if ( $user ) {
+    }
+
+    $result->{XX_is_logged_in} = MyApp::Service::Auth::_is_logged_in();
+
+    my %cookies = map {
+        my ($k, $v) = split /=/, $_, 2;
+        $k =~ s/^\s+|\s+$//g;
+        $k => $v // ''
+    } split /;\s*/, $env->{HTTP_COOKIE} // '';
+    my $cookies = \%cookies;
+
+    return {
+        name    => 'Controller::Login: ' . $value,
+	env     => $env,
+	cookies => $cookies,
+	result  => $result,
+	xy      => "Frisch v/<b>Controller</b> lib/MyApp/Controller/Logout. $params->{user}"
+    };
+}
+
+1;
