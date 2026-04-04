@@ -32,7 +32,7 @@ $.data => sub { {} }
 
 <p class="text-left mb-3">
 % use Data::Dumper;
-Result: <% Dumper $self->data->{result}->{out2} %><br>
+Result (out): <% Dumper $self->data->{result}->{out} %><br>
 % foreach (sort keys %{ $self->data->{result} }) {
 	[result] - <b><% $_ %></b> &larr; <% $self->data->{result}->{$_} %><br>
 % }

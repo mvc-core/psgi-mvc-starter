@@ -14,9 +14,9 @@ sub index {
     my $result;
 
     if ( $params->{in} ) {
-    	$result->{out} = "asdfxx$$";
+	    # XXX $result->{out} = "asdfxx$$";
 
-	$result->{out2} = MyApp::Util::Crypt->encrypt(
+	$result->{out} = MyApp::Util::Crypt->encrypt(
 		plain => $params->{in} // 'foo'
 	);
     }
