@@ -5,8 +5,6 @@ use warnings;
 use utf8;
 
 # use MyApp::DB;
-# XX use LWP::UserAgent;
-# XX use HTTP::Request;
 # XX use JSON qw(encode_json decode_json);
 
 sub index {
@@ -16,7 +14,9 @@ sub index {
 
     my $result;
 
-    $result->{out} = "asdfxx$$";
+    if ( $params->{in} ) {
+    	$result->{out} = "asdfxx$$";
+    }
 
     return {
         name    => 'Controller::Crypt',
