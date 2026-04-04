@@ -15,9 +15,17 @@ sub index {
 
     my ($value) = $dbh->selectrow_array("SELECT firstname FROM users_addr LIMIT 1");
 
+    my %cookies = map {
+        my ($k, $v) = split /=/, $_, 2;
+        $k =~ s/^\s+|\s+$//g;
+        $k => $v // ''
+    } split /;\s*/, $env->{HTTP_COOKIE} // '';
+    my $cookies = \%cookies;
+
     return {
         name => "$value via Controller Foo",
 	env  => $env,
+	cookies => $cookies,
 	xy   => "hhhDie PID ist jetzt gerade $$ / " . $crypt->encrypt('foo', 'bar')
     };
 }
