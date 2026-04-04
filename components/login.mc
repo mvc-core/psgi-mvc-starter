@@ -29,8 +29,13 @@ $.data => sub { {} }
 </form>
 <br>
 
+% foreach (keys %{ $self->data->{result} }) {
+	[result / REST API] - <b><% $_ %></b> = <% $self->data->{result}->{$_} %><br>
+% }
+<hr>
+
 % foreach (keys %{ $self->data->{subdata} }) {
-	[CGI] - <% $_ %> = <% $self->data->{subdata}->{$_} %><br>
+% # XXX	[CGI] - <% $_ %> = <% $self->data->{subdata}->{$_} %><br>
 % }
 
 <hr>
@@ -43,11 +48,6 @@ $.data => sub { {} }
 <hr>
 % foreach (keys %{ $self->data->{_session} }) {
 	[Sess] - <b><% $_ %></b> = <% $self->data->{_session}->{$_} %><br>
-% }
-
-<hr>
-% foreach (keys %{ $self->data->{result} }) {
-	[result] - <b><% $_ %></b> = <% $self->data->{result}->{$_} %><br>
 % }
 
 <& partials/footer.mc, data=>$self->data &>
