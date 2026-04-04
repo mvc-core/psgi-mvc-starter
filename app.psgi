@@ -174,10 +174,10 @@ builder {
 
         enable 'Plack::Middleware::ContentLength';
 
-	# enable 'Plack::Middleware::CrossOrigin',
-	#    origins => '*',
-	#    headers => '*',
-	#    methods => 'GET,POST,PUT,DELETE,OPTIONS';
+	enable 'Plack::Middleware::CrossOrigin',
+	    origins => '*',
+	    headers => '*',
+	    methods => 'GET,POST,PUT,DELETE,OPTIONS';
 
         # Optional: einfache Token-Auth
         # enable 'Plack::Middleware::Auth::Bearer',
