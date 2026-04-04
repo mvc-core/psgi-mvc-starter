@@ -20,9 +20,17 @@ sub index {
     # Übermittelte Formular-Parameter für Template-Ausgabe
     my %subdata = %{ $params // {} };
 
+    my %cookies = map {
+        my ($k, $v) = split /=/, $_, 2;
+        $k =~ s/^\s+|\s+$//g;
+        $k => $v // ''
+    } split /;\s*/, $env->{HTTP_COOKIE} // '';
+    my $cookies = \%cookies;
+
     return {
         name    => 'Controller::Login: ' . $value,
 	env     => $env,
+	cookies => $cookies,
         xy      => "Aus dem <b>Controller</b> lib/MyApp/Controller/Login.",
         subdata => \%subdata,
     };
