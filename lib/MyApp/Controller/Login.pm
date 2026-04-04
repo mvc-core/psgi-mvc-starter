@@ -26,7 +26,7 @@ sub index {
             'Authorization' => "Bearer $token",
             'Content-Type'  => 'application/json',
         ],
-        encode_json({ user => $params->{user}, password => $params->{pass}, tenant => $env->{HTTP_HOST} || 'hoe' })
+        encode_json({ user => $params->{user}, password => $params->{pass}, tenant => $env->{HTTP_HOST} })
     );
     my $res = $ua->request($req);
     $result = decode_json($res->decoded_content) if $res->is_success;
