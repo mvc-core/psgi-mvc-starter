@@ -47,6 +47,13 @@ $.data => sub { {} }
       </li>
 
       <li>
+        <a href="/argon2"
+           class="flex items-center gap-2 rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700 transition-colors shadow-sm">
+          <span class="text-blue-500">&#9654;</span> Argon2
+        </a>
+      </li>
+
+      <li>
         <a href="/foo"
            class="flex items-center gap-2 rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700 transition-colors shadow-sm">
           <span class="text-blue-500">&#9654;</span> Testfunktion
