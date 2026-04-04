@@ -18,10 +18,12 @@ sub index {
 
     my $result;
     my $token = 'secret';
+    my $api_endpoint = 'https://psgi.h3.zspace.ch/api/secure';
+       $api_endpoint = 'http://localhost/api/secure' if $env->{HTTP_HOST} eq 'psgi.h3.zspace.ch';
 
     my $ua  = LWP::UserAgent->new;
     my $req = HTTP::Request->new(
-        POST => 'https://psgi.h3.zspace.ch/api/secure',
+        POST => $api_endpoint,
         [
             'Authorization' => "Bearer $token",
             'Content-Type'  => 'application/json',
