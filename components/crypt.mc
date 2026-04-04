@@ -36,6 +36,10 @@ Result (out): <% Dumper $self->data->{result}->{out} %><br>
 % foreach (sort keys %{ $self->data->{result} }) {
 	[result] - <b><% $_ %></b> &larr; <% $self->data->{result}->{$_} %><br>
 % }
+
+%	foreach (sort keys %{ $self->data->{result}->{out} }) {
+		XX ----- <% $_ %> = <% $self->data->{result}->{out}->{$_} %><br>
+%	}
 </p>
 <hr>
 
