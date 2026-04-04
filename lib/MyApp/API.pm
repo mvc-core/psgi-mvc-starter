@@ -42,7 +42,10 @@ post '/secure' => sub {
     my $user     = $data->{user};
     my $password = $data->{password};
 
-    return { ok => 1, msg => "Username was $user, PID $$" };
+    return {
+        ok  => 1,
+        msg => "Username was $user, PID $$, $ENV{HOSTNAME}"
+    };
 };
 
 1;
