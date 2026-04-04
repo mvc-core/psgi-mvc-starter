@@ -31,7 +31,11 @@ sub index {
         encode_json({ user => $params->{user}, password => $params->{pass}, tenant => $env->{HTTP_HOST} })
     );
     my $res = $ua->request($req);
-    $result = decode_json($res->decoded_content) if $res->is_success;
+    if ($res->is_success) {
+        $result = decode_json($res->decoded_content);
+    } else {
+        $result = { errmsg => $res->status_line };
+    }
 
     # Formular abgeschickt: User in Session speichern
     if ( $params->{user} ) {
