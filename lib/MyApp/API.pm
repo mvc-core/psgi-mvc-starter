@@ -11,7 +11,7 @@ get '/me' => sub {
     return { user => 'demo' };
 };
 
-get '/secure' => sub {
+post '/secure' => sub {
     my $auth = request->header('Authorization');
 
     return send_error('Unauthorized', 401)
