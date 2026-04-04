@@ -11,6 +11,16 @@ get '/me' => sub {
     return { user => 'demo' };
 };
 
+# mit ID
+get '/me/:id' => sub {
+    my $id = route_parameters->get('id');
+
+    return {
+        user => 'demo',
+        id   => $id
+    };
+};
+
 post '/secure' => sub {
     my $auth = request->header('Authorization');
 
