@@ -34,11 +34,6 @@ $.data => sub { {} }
 % }
 <hr>
 
-% foreach (keys %{ $self->data->{subdata} }) {
-% # XXX	[CGI] - <% $_ %> = <% $self->data->{subdata}->{$_} %><br>
-% }
-
-<hr>
 <p class="text-left mb-3">
 %       foreach (sort keys %{ $self->data->{cookies} }) {
                 [🍪 Cookie] <b><% $_ %></b> = <% substr($self->data->{cookies}->{$_}, 0, 110) %><br>
