@@ -28,3 +28,7 @@ lib/MyApp/
 ```console
 apt install libdancer2-perl libjson-maybexs-perl
 ```
+
+```console
+apt install libplack-middleware-crossorigin-perl
+```
