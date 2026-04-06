@@ -14,12 +14,13 @@ sub index {
     my $dbh = MyApp::DB::get_dbh();
 
     my @msgs = ();
+    my @set_cookies = ();
 
     my ($value) = $dbh->selectrow_array("SELECT firstname FROM users_addr LIMIT 1");
 
     if ( $env->{PATH_INFO} =~ /\b\/set-cookie\b/ ) {
-	    print STDERR "XXX ...... set cookie.......\n";
-	    push(@msgs, "XX set cookie $$");
+        push(@msgs, "XX set cookie $$");
+        push(@set_cookies, 'myapp_testcookie=asdf%20xx; Path=/');
     }
 
     my %cookies = map {
@@ -32,11 +33,12 @@ sub index {
     my $msg = join ', ', @msgs;
 
     return {
-        name    => "$value via Controller Foo",
-	msg     => $msg,
-	env     => $env,
-	cookies => $cookies,
-	xy      => "hhhDie PID ist jetzt gerade $$ / " . $crypt->encrypt('foo', 'bar')
+        name        => "$value via Controller Foo",
+        msg         => $msg,
+        env         => $env,
+        cookies     => $cookies,
+        xy          => "hhhDie PID ist jetzt gerade $$ / " . $crypt->encrypt('foo', 'bar'),
+        _set_cookies => \@set_cookies,
     };
 }
 
