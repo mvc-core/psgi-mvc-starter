@@ -3,6 +3,7 @@ package MyApp::Controller::Foo;
 use strict;
 use warnings;
 
+use POSIX qw(strftime);
 use MyApp::DB;
 use Crypt::Lite;
 
@@ -20,7 +21,8 @@ sub index {
 
     if ( $env->{PATH_INFO} =~ /\b\/set-cookie\b/ ) {
         push(@msgs, "XX set cookie $$");
-        push(@set_cookies, "myapp_testcookie_1=asdf%20$$; Path=/");
+        my $expires = strftime('%a, %d %b %Y %H:%M:%S GMT', gmtime(time() + 7200));
+        push(@set_cookies, "myapp_testcookie_1=asdf%20$$; Path=/; Expires=$expires; HttpOnly");
         push(@set_cookies, "myapp_testcookie_2=asdx%20$$; Path=/");
     }
 
