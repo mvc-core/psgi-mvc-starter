@@ -19,7 +19,7 @@ sub index {
 
     if ( $env->{PATH_INFO} =~ /\b\/set-cookie\b/ ) {
 	    print STDERR "XXX ...... set cookie.......\n";
-	    push(@msgs, 'XX set cookie');
+	    push(@msgs, "XX set cookie $$");
     }
 
     my %cookies = map {
