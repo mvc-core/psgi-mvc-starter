@@ -25,6 +25,7 @@ $.data => sub { {} }
 <hr>
 
 <p class="text-left mb-3">
+	<a class="text-red-800" href="/foo/set-cookie">🚀 Set Cookie</a><br>
 %	foreach (sort keys %{ $self->data->{cookies} }) {
         	[🍪 Cookie] <b><% $_ %></b> = <% substr($self->data->{cookies}->{$_}, 0, 110) %><br>
 %	}
