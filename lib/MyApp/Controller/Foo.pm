@@ -20,7 +20,8 @@ sub index {
 
     if ( $env->{PATH_INFO} =~ /\b\/set-cookie\b/ ) {
         push(@msgs, "XX set cookie $$");
-        push(@set_cookies, "myapp_testcookie=asdf%20$$; Path=/");
+        push(@set_cookies, "myapp_testcookie_1=asdf%20$$; Path=/");
+        push(@set_cookies, "myapp_testcookie_2=asdx%20$$; Path=/");
     }
 
     my %cookies = map {
