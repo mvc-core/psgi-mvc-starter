@@ -15,6 +15,10 @@ sub index {
 
     my ($value) = $dbh->selectrow_array("SELECT firstname FROM users_addr LIMIT 1");
 
+    if ( $env->{PATH_INFO} =~ /\b\/set-cookie\b/ ) {
+	    print STDERR "XXX ...... set cookie.......\n";
+    }
+
     my %cookies = map {
         my ($k, $v) = split /=/, $_, 2;
         $k =~ s/^\s+|\s+$//g;
