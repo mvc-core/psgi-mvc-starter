@@ -156,9 +156,14 @@ my $app = sub {
         ];
     }
 
+    my @headers = ( 'Content-Type' => 'text/html; charset=UTF-8' );
+    for my $cookie ( @{ $data->{_set_cookies} // [] } ) {
+        push @headers, 'Set-Cookie' => $cookie;
+    }
+
     return [
         200,
-        [ 'Content-Type' => 'text/html; charset=UTF-8' ],
+        \@headers,
         [ $current_output ],
     ];
 };
