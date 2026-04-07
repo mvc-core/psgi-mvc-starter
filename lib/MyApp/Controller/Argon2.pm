@@ -29,7 +29,8 @@ sub index {
 
     (my $user = $params->{user}) =~ tr/ //d;
 
-    my $password_hash = 'XXX';
+    my $password_hash = '$argon2id$v=19$m=16384,t=3,p=1$FsN0wnpCVkhJhmO3OHPQrQ$eeRdNxahsdM9IWaoX43AVA';
+    push(@msgs, "XXX das pass war " . $params->{pass});
 
     my $granted = my $f_argon_error = 0;
     eval { $granted = argon2id_verify($password_hash, $params->{pass}); };
@@ -38,6 +39,7 @@ sub index {
         push(@msgs, "E510252: $errstr");
         $f_argon_error = 1;
     }
+    push(@msgs, 'OKAY: KORREKT') if $granted;
 
     if ( $user ) {
         my $ua  = LWP::UserAgent->new;
@@ -71,6 +73,8 @@ sub index {
     return {
         name    => 'Controller::Login: ' . $value,
 	env     => $env,
+	msg     => join ', ', @msgs,
+	granted => $granted,
 	cookies => $cookies,
 	result  => $result,
 	xy      => "Frisch v/<b>Controller</b> lib/MyApp/Controller/Login. $params->{user}"
