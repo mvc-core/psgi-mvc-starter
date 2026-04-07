@@ -21,6 +21,7 @@ $.data => sub { {} }
 %	foreach (keys %{ $self->data->{_session} }) {
         	[Sess] <b><% $_ %></b> = <% $self->data->{_session}->{$_} %><br>
 %	}
+	via MyApp::Service::Auth::_is_logged_in( ) &rarr; "<% $self->data->{is_logged_in} %>"
 </p>
 <hr>
 
