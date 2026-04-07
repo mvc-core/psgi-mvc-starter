@@ -30,7 +30,7 @@ sub index {
     (my $user = $params->{user}) =~ tr/ //d;
 
     my $password_hash = '$argon2id$v=19$m=16384,t=3,p=1$FsN0wnpCVkhJhmO3OHPQrQ$eeRdNxahsdM9IWaoX43AVA';
-    push(@msgs, "XXX das pass war " . $params->{pass});
+    # XXX push(@msgs, "XXX das pass war " . $params->{pass});
 
     my $granted = my $f_argon_error = 0;
     eval { $granted = argon2id_verify($password_hash, $params->{pass}); };
