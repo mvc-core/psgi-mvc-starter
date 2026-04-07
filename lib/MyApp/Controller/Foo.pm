@@ -5,6 +5,7 @@ use warnings;
 
 use POSIX qw(strftime);
 use MyApp::DB;
+use MyApp::Service::Auth;
 use Crypt::Lite;
 
 my $crypt = Crypt::Lite->new( encoding => 'hex8 ');
@@ -39,6 +40,7 @@ sub index {
         name        => "$value via Controller Foo",
         msg         => $msg,
         env         => $env,
+	is_logged_in => MyApp::Service::Auth::_is_logged_in($env),
         cookies     => $cookies,
         xy          => "hhhDie PID ist jetzt gerade $$ / " . $crypt->encrypt('foo', 'bar'),
         _set_cookies => \@set_cookies,
