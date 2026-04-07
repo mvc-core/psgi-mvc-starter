@@ -23,12 +23,13 @@ $.data => sub { {} }
 	<input type="text" name="user" placeholder="Benutzername"
 		class="rounded-lg border border-gray-300 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
 
-	<input type="text" name="pass" placeholder="Passwort"
+	<small>(testtest)</small>
+	<input type="password" name="pass" placeholder="Passwort"
 		class="rounded-lg border border-gray-300 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
 
 	<button type="submit"
 		class="rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700 active:bg-blue-800 transition-colors">
-		XX Login
+		- Login -
 	</button>
 </form>
 <br>
