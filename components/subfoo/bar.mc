@@ -22,7 +22,7 @@ $.data => sub { {} }
 	<a href="/">Back to Start</a>
 </p>
 <p class="mt-6">
-	X -- xy = <% $self->data->{xy} %>
+	X -- <code>_id</code> = "<% $self->data->{_id} %>"
 </p>
 
 <dl class="mt-6 text-left text-sm divide-y divide-gray-200 border border-gray-200 rounded-lg overflow-hidden w-full max-w-2xl mx-auto">
