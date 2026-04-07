@@ -10,8 +10,8 @@ sub index {
     my ($value) = $dbh->selectrow_array("SELECT firstname FROM users_addr LIMIT 1");
 
     return {
-        name => '***** Controller::Subfoo::Bar ***** &rarr; '.$value,
-	xy   => "Ein anderes xy mit $$"
+        name => '***** Controller::Subfoo::Bar (604071) ***** &rarr; '.$value,
+	xy   => "Ein anderes aus 604071 xy mit PID $$"
     };
 }
 
