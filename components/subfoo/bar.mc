@@ -26,7 +26,7 @@ $.data => sub { {} }
 % foreach (sort keys %ENV) {
 %	next if /pass/i;
   <div class="flex gap-2 px-4 py-2 even:bg-gray-50 hover:bg-blue-50 transition-colors">
-    <dt class="font-semibold text-gray-700 shrink-0 w-56 truncate">[$ENV] - <% $_ %></dt>
+    <dt class="font-semibold text-gray-700 shrink-0 w-56 truncate"><code>$ENV</code> - <% $_ %></dt>
     <dd class="text-gray-500 truncate"><% $ENV{$_} %></dd>
   </div>
 % }
