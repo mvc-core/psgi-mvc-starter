@@ -129,6 +129,14 @@ my $app = sub {
     # Controller für den aufgelösten Pfad laden ($params und $env weitergeben)
     my $data = _dispatch_controller($dispatch_path, $params, $env) // {};
 
+    # Interner Redirect: Controller signalisiert Weiterleitung zu anderem Pfad
+    if ( my $redirect_to = delete $data->{_internal_redirect} ) {
+        ($mason_path, $id) = _resolve_path($redirect_to);
+        $dispatch_path = $redirect_to;
+        $data = _dispatch_controller($dispatch_path, $params, $env) // {};
+        $path = $redirect_to;
+    }
+
     # System-Werte eintragen (mit _ als Präfix um Kollisionen zu vermeiden)
     $data->{_path}    = $path;
     $data->{_id}      = $id if defined $id;
