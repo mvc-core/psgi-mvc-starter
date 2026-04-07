@@ -10,7 +10,8 @@ sub index {
     my $dbh = MyApp::DB::get_dbh();
 
     if ( $env->{PATH_INFO} =~ /\/4322$/ ) {
-    	print STDERR "XX ......... $env->{PATH_INFO} ... Umleitung zu /subfoo ...\n";
+        print STDERR "XX ......... $env->{PATH_INFO} ... Interner Redirect zu /subfoo ...\n";
+        return { _internal_redirect => '/subfoo' };
     }
 
     my ($value) = $dbh->selectrow_array("SELECT firstname FROM users_addr LIMIT 1");
