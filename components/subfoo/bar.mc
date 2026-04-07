@@ -24,7 +24,7 @@ $.data => sub { {} }
 
 <dl class="mt-6 text-left text-sm divide-y divide-gray-200 border border-gray-200 rounded-lg overflow-hidden w-full max-w-2xl mx-auto">
 % foreach (sort keys %ENV) {
-%	next if /pass/i;
+%	next if /pass/i or $_ eq 'HOME' or $_ eq 'OLDPWD' or $_ eq 'PATH';
   <div class="flex gap-2 px-4 py-2 even:bg-gray-50 hover:bg-blue-50 transition-colors">
     <dt class="font-semibold text-gray-700 shrink-0 w-56 truncate"><code>$ENV</code> - <% $_ %></dt>
     <dd class="text-gray-500 truncate"><% $ENV{$_} %></dd>
