@@ -18,6 +18,7 @@ sub index {
 
     return {
         name => '***** Controller::Subfoo::Bar (604071) ***** &rarr; '.$value,
+	env  => $env,
 	xy   => "Ein anderes aus 604071 xy mit PID $$"
     };
 }
