@@ -19,7 +19,7 @@ $.data => sub { {} }
 <h2 class="text-2xl font-bold text-blue-600">Hello <% $self->data->{name} // 'Anonymous' %></h2>
 
 <p class="mt-6">
-	<a href="/">Back to Start</a>
+	<a href="/">Back to Start</a> &mdash; <a href="/subfoo/bar/4322">4322</a>
 </p>
 <p class="mt-6">
 	X -- <code>_id</code> = "<% $self->data->{_id} %>"
