@@ -75,7 +75,6 @@ sub index {
 	env     => $env,
 	msg     => (join ', ', @msgs),
 	granted => $granted,
-	aaa => "uhu$$",
 	cookies => $cookies,
 	result  => $result,
 	xy      => "Frisch v/<b>Controller</b> lib/MyApp/Controller/Login. $params->{user}"
