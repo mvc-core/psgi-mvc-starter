@@ -5,7 +5,13 @@ use warnings;
 use MyApp::DB;
 
 sub index {
+    my ($params, $env) = @_;
+
     my $dbh = MyApp::DB::get_dbh();
+
+    if ( $env->{PATH_INFO} =~ /\/4321$/ ) {
+    	print STDERR "XX ......... $env->{PATH_INFO}\n";
+    }
 
     my ($value) = $dbh->selectrow_array("SELECT firstname FROM users_addr LIMIT 1");
 
