@@ -21,6 +21,9 @@ $.data => sub { {} }
 <p class="mt-6">
 	<a href="/">Back to Start</a>
 </p>
+<p class="mt-6">
+	X -- xy = <% $self->data->{xy} %>
+</p>
 
 <dl class="mt-6 text-left text-sm divide-y divide-gray-200 border border-gray-200 rounded-lg overflow-hidden w-full max-w-2xl mx-auto">
 % foreach (sort keys %ENV) {
