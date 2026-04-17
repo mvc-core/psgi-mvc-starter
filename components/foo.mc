@@ -36,6 +36,11 @@ $.data => sub { {} }
 </p>
 <hr>
 
+% my $p__foo = $self->data->{p}->foo();
+% foreach (sort keys %$p__foo) {
+	[Prismado / foo] - <b><% $_ %></b> = <% $p__foo->{$_} %><br>
+% }
+
 <div class="mt-3 text-left columns-2 gap-5 break-all">
 %	foreach (sort keys %{ $self->data->{env} }) {
 %		next unless length( $self->data->{env}->{$_} );

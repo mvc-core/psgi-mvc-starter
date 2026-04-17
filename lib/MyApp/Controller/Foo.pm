@@ -7,8 +7,10 @@ use POSIX qw(strftime);
 use MyApp::DB;
 use MyApp::Service::Auth;
 use Crypt::Lite;
+use ScreenPoint::Prismado;
 
 my $crypt = Crypt::Lite->new( encoding => 'hex8 ');
+my $p     = ScreenPoint::Prismado->new();
 
 sub index {
     my ($params, $env) = @_;
@@ -39,6 +41,7 @@ sub index {
     return {
         name        => "$value via Controller Foo",
         msg         => $msg,
+	p           => $p,
         env         => $env,
 	is_logged_in => MyApp::Service::Auth::_is_logged_in($env),
         cookies     => $cookies,
