@@ -3,6 +3,8 @@ use warnings;
 
 use lib 'lib';
 
+use Encode qw(encode_utf8);
+
 use Mason::PluginManager;
 use Mason::Interp;
 use Plack::Request;
@@ -172,7 +174,7 @@ my $app = sub {
     return [
         200,
         \@headers,
-        [ $current_output ],
+        [ encode_utf8($current_output) ],
     ];
 };
 
