@@ -11,7 +11,7 @@ my %CONNECT_ARGS = (
     RaiseError        => 1,
     AutoCommit        => 1,
     PrintError        => 0,
-    mysql_enable_utf8 => 1
+    # mysql_enable_utf8 => 1,
     # mysql_enable_utf8mb4 => 1
 );
 
