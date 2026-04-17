@@ -174,7 +174,7 @@ my $app = sub {
     return [
         200,
         \@headers,
-        [ encode_utf8($current_output) ],
+        [ $current_output ],
     ];
 };
 
