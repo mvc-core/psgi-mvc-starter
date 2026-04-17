@@ -7,15 +7,16 @@ use POSIX qw(strftime);
 use MyApp::DB;
 use MyApp::Service::Auth;
 use Crypt::Lite;
-use ScreenPoint::Prismado;
+use ScreenPoint::Prism;
 
 my $crypt = Crypt::Lite->new( encoding => 'hex8 ');
-my $p     = ScreenPoint::Prismado->new();
 
 sub index {
     my ($params, $env) = @_;
 
     my $dbh = MyApp::DB::get_dbh();
+
+    my $p   = ScreenPoint::Prism->new(dbh => $dbh);
 
     my @msgs = ();
     my @set_cookies = ();
