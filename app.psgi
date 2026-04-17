@@ -3,8 +3,6 @@ use warnings;
 
 use lib 'lib';
 
-use Encode qw(encode_utf8);
-
 use Mason::PluginManager;
 use Mason::Interp;
 use Plack::Request;
