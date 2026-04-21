@@ -58,6 +58,8 @@ $.data => sub { {} }
 %	}
 </p>
 
+<& partials/inc_debug_data.html, data => $self->data &>
+
 <div class="mt-20">
 	<hr class="mb-3">
 	<p class="text-left mb-3">
