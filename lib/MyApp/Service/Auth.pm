@@ -11,8 +11,11 @@ sub authen {
 
 	my $user = $args{user};
 	my $pass = $args{pass};
+	my $dbh  = MyApp::DB::get_dbh();
 
-	$res{msg} = "XX $user " . substr($pass, 0, 4) . '...';
+	my ($value) = $dbh->selectrow_array("SELECT password_hash FROM users LIMIT 1");
+
+	$res{msg} = "XX $user / $value " . substr($pass, 0, 4) . '...';
 
 	return \%res;
 }
