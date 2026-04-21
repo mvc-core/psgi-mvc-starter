@@ -18,6 +18,7 @@ sub index {
     my ($value) = $dbh->selectrow_array("SELECT firstname FROM users_addr LIMIT 1");
 
     $session->{is_logged_in} = 0;
+    $session->{user}         = '';
 
     my $result;
     my $token = 'secret';
