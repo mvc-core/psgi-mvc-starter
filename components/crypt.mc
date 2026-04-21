@@ -79,7 +79,7 @@ $.data => sub { {} }
 </div>
 
 % foreach (sort keys %{ $self->data->{cgi} }) {
-	[cgi] - <% $_ %> = <% $self->data->{cgi}->{$_} %><br>
+	[cgi] - <b><% $_ %></b> = <% $self->data->{cgi}->{$_} %><br>
 % }
 
 <& partials/footer.mc, data=>$self->data &>
