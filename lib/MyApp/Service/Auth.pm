@@ -16,8 +16,7 @@ sub authen {
 	my $pass = $args{pass};
 	my $dbh  = MyApp::DB::get_dbh();
 
-	my ($password_hash) = $dbh->selectrow_array("SELECT password_hash FROM users where uname='$user' limit 1");
-	# XXX my ($password_hash) = $dbh->selectrow_array("SELECT password_hash FROM users where id=1");
+	my ($password_hash) = $dbh->selectrow_array('SELECT password_hash FROM users WHERE uname = ? LIMIT 1', undef, $user);
 
 	my $granted = my $f_argon_error = 0;
 	eval { $granted = argon2id_verify($password_hash, $pass); };
