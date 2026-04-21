@@ -46,7 +46,7 @@ $.data => sub { {} }
 %       foreach (sort keys %{ $self->data->{cookies} }) {
                 [🍪 Cookie] <b><% $_ %></b> = <% substr($self->data->{cookies}->{$_}, 0, 66) %><br>
 %       }
-	QQQ <% $self->data->{P}->get_secret()->{secret} %>
+	Secret: <% substr($self->data->{P}->get_secret()->{secret}, 0, 4) . '...' %>
 </p>
 
 <& partials/footer.mc, data=>$self->data &>
