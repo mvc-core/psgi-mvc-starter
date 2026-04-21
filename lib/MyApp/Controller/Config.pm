@@ -6,10 +6,10 @@ use warnings;
 use POSIX qw(strftime);
 use MyApp::DB;
 use MyApp::Service::Auth;
-use Crypt::Lite;
+# XXX use Crypt::Lite;
 use ScreenPoint::Prism;
 
-my $crypt = Crypt::Lite->new( encoding => 'hex8 ');
+# XXX my $crypt = Crypt::Lite->new( encoding => 'hex8 ');
 
 sub index {
     my ($params, $env) = @_;
@@ -46,7 +46,7 @@ sub index {
         env         => $env,
 	is_logged_in => MyApp::Service::Auth::_is_logged_in($env),
         cookies     => $cookies,
-        xy          => "hhhDie PID ist jetzt gerade $$ / " . $crypt->encrypt('foo', 'bar'),
+	# XXX xy          => "hhhDie PID ist jetzt gerade $$ / " . $crypt->encrypt('foo', 'bar'),
         _set_cookies => \@set_cookies,
     };
 }
