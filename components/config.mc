@@ -28,16 +28,20 @@ $.data => sub { {} }
 %	}
 	via MyApp::Service::Auth::_is_logged_in( ) &rarr; "<% $self->data->{is_logged_in} %>"
 </p>
-<hr>
+% # XXX <hr>
 
 <p class="text-left mb-3">
-	<a class="text-red-800" href="/foo/set-cookie">🚀 Set Cookie</a><br>
+% # XXX	<a class="text-red-800" href="/foo/set-cookie">🚀 Set Cookie</a><br>
 %	if ( $self->data->{msg} ) {
 		<b><% $self->data->{msg} %></b><br>
 %	}
+<%doc>
+XXX:
 %	foreach (sort keys %{ $self->data->{cookies} }) {
         	[🍪 Cookie] <b><% $_ %></b> = <% substr($self->data->{cookies}->{$_}, 0, 110) %><br>
 %	}
+/XXX
+</%doc>
 </p>
 <hr>
 
