@@ -22,7 +22,7 @@ $.data => sub { {} }
 
 <h2 class="text-2xl font-bold">Hello <% $self->data->{name} // 'Anonymous' %>?!</h2>
 
-<form method="post" class="flex flex-col gap-3 w-72 mx-auto mt-6">
+<form method="post" class="flex flex-col gap-3 w-72 mx-auto mt-20">
 	<input type="text" name="in" placeholder="Input" value="<% $self->data->{cgi}->{in} %>"
 		class="rounded-lg border border-gray-300 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
 
@@ -54,9 +54,10 @@ $.data => sub { {} }
 		[result / out ] - <b><% $_ %></b> = <% $self->data->{result}->{out}->{$_} %><br>
 %	}
 </p>
-<hr>
 
-<p class="text-left mb-3">
+<div class="mt-20">
+	<hr class="mb-3">
+	<p class="text-left mb-3">
 %	unless (defined $self->data->{cookies}) {
 		<p class="mb-4 text-sm">Derzeit keine <a class="text-blue-800" href="/foo/set-cookie">Cookies</a>.</p>
 %	}
@@ -64,12 +65,15 @@ $.data => sub { {} }
 %       foreach (sort keys %{ $self->data->{cookies} }) {
                 [🍪 Cookie] <b><% $_ %></b> = <% substr($self->data->{cookies}->{$_}, 0, 66) %><br>
 %       }
-</p>
+	</p>
 
-<hr>
-% foreach (keys %{ $self->data->{_session} }) {
-	[Sess] - <b><% $_ %></b> = <% $self->data->{_session}->{$_} %><br>
-% }
+	<hr class="mb-2">
+	<p class="text-left mb-3">
+%		foreach (keys %{ $self->data->{_session} }) {
+			[Sess] - <b><% $_ %></b> = <% $self->data->{_session}->{$_} %><br>
+%		}
+	</p>
+</div>
 
 % foreach (sort keys %{ $self->data->{cgi} }) {
 	[cgi] - <% $_ %> = <% $self->data->{cgi}->{$_} %><br>
