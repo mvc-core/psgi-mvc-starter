@@ -5,6 +5,11 @@ use warnings;
 use utf8;
 
 use MyApp::Util::Crypt;
+use ScreenPoint::Prism;
+
+my $dbh = MyApp::DB::get_dbh();
+
+my $P = ScreenPoint::Prism->new( dbh => $dbh );
 
 sub index {
     my ($params, $env) = @_;
@@ -33,6 +38,7 @@ sub index {
 
     return {
         name    => 'Controller::Crypt',
+	P       => $P,
 	env     => $env,
 	cgi     => $params,
 	result  => $result,
