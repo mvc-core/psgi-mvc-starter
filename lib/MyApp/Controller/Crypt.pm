@@ -16,7 +16,7 @@ sub index {
     if ( $params->{in} ) {
 	$result->{out} = MyApp::Util::Crypt->encrypt(
 		plain => $params->{in} // 'foo',
-		key   => $params->{key}
+		key   => $params->{key} || '0123456789abcdef0123456789abcdef'
 	);
     }
     elsif ( $params->{enc} ) {
@@ -37,7 +37,7 @@ sub index {
 	cgi     => $params,
 	result  => $result,
 	cookies => \%cookies,
-	xy      => "Frisch v/<b>Controller</b> lib/MyApp/Controller/Crypt. $params->{in} $params->{key}"
+	xy      => "Frisch v/<b>Controller</b> lib/MyApp/Controller/Crypt. $params->{in} <tt>\"$params->{key}\"</tt>"
     };
 }
 
