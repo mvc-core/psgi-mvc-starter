@@ -34,11 +34,21 @@ sub authen {
 	return \%res;
 }
 
-sub _test {
-	my %foo = (
-		aha => '604041xy'
-	);
-	return \%foo;
+sub perm {
+	my %args = @_;
+
+	# -- my $perm = MyApp::Service::Auth::perm(env => $env);
+
+	my %res = ();
+	my $env = $args{env};
+
+	my $session = $env->{'psgix.session'};
+
+	$res{XX} = "aha$$";
+
+	# XXX my %foo = ( aha => '604041xy');
+
+	return \%res;
 }
 
 sub _is_logged_in {
