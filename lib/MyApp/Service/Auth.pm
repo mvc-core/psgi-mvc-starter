@@ -10,22 +10,26 @@ sub authen {
 	my %args = @_;
 
 	my %res = ();
+	   $res{rc} = 0;
 
 	my $user = $args{user};
 	my $pass = $args{pass};
 	my $dbh  = MyApp::DB::get_dbh();
 
-	my ($password_hash) = $dbh->selectrow_array(
-		'SELECT password_hash FROM users WHERE uname = ? LIMIT 1',
+	my ($uid, $password_hash) = $dbh->selectrow_array(
+		'SELECT id, password_hash FROM users WHERE uname = ? LIMIT 1',
 		undef, $user
 	);
 
 	my $granted = my $f_argon_error = 0;
 	eval { $granted = argon2id_verify($password_hash, $pass); };
 
-	$res{rc} = $granted ? 0 : 1;
-
-	# XXX $res{msg} = "XX ------ granted=$granted";
+	if ( $granted ) {
+		$res{uid} = $uid;
+	}
+	else {
+		$res{rc} = 1;
+	}
 
 	return \%res;
 }
