@@ -19,7 +19,8 @@ sub index {
 
     $session->{is_logged_in} = 0;
     $session->{uid}          = 0;
-    $session->{user}         = '';
+    # XX $session->{user}         = '';
+    delete $session->{user};
 
     my $result;
     my $token = 'secret';
@@ -31,9 +32,9 @@ sub index {
     if ( $user ) {
     }
 
-    my $msg = "XX asdf / logout";
+    my $msg = "XX Controller: logout";
 
-    $result->{XX_is_logged_in} = MyApp::Service::Auth::_is_logged_in();
+    # XX $result->{XX_is_logged_in} = MyApp::Service::Auth::_is_logged_in();
 
     my %cookies = map {
         my ($k, $v) = split /=/, $_, 2;
@@ -47,8 +48,7 @@ sub index {
 	msg     => $msg,
 	env     => $env,
 	cookies => $cookies,
-	result  => $result,
-	xy      => "Frisch v/<b>Controller</b> lib/MyApp/Controller/Logout. $params->{user}"
+	result  => $result
     };
 }
 
