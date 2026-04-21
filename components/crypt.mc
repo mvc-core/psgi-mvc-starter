@@ -59,7 +59,7 @@ $.data => sub { {} }
 </p>
 
 <p>
-	<% $self->data->{P}->get_secret()->{secret} || 'HOE' %>
+	<code>$P-&gt;get_secret()->{secret} &rarr; <% substr($self->data->{P}->get_secret()->{secret}, 0, 5) . '...' %>
 </p>
 
 <& partials/inc_debug_data.html, data => $self->data &>
