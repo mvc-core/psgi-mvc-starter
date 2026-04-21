@@ -23,7 +23,9 @@ sub authen {
 	my $granted = my $f_argon_error = 0;
 	eval { $granted = argon2id_verify($password_hash, $pass); };
 
-	$res{msg} = "XX ------ granted=$granted";
+	$res{rc} = $granted ? 0 : 1;
+
+	# XXX $res{msg} = "XX ------ granted=$granted";
 
 	return \%res;
 }
