@@ -52,7 +52,7 @@ sub index {
         $session->{user}         = $params->{user};
         $session->{is_logged_in} = $result->{auth}->{rc} ? 0 : 1;
 
-	$msg = "XX [authen] - auth rc = $result->{auth}->{rc}";
+	$msg = "XX [authen] - auth rc = $result->{auth}->{rc} / UID $result->{auth}->{uid}";
     }
 
     $result->{XX_Auth__is_logged_in} = MyApp::Service::Auth::_is_logged_in($env);
