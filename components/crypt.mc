@@ -26,6 +26,9 @@ $.data => sub { {} }
 	<input type="text" name="in" placeholder="Input" value="<% $self->data->{cgi}->{in} %>"
 		class="rounded-lg border border-gray-300 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
 
+	<input type="text" name="key" placeholder="Secret" value="<% $self->data->{cgi}->{key} %>"
+		class="rounded-lg border border-gray-300 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+
 	<button type="submit"
 		class="rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700 active:bg-blue-800 transition-colors">
 		Encrypt
