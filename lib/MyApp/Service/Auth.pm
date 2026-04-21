@@ -46,6 +46,8 @@ sub perm {
 
 	my $session = $env->{'psgix.session'};
 
+	return \%res unless $session->{uid};
+
 	($res{is_admin}, $res{is_devel}, $res{uname}) = $dbh->selectrow_array(
 		'SELECT is_admin, is_devel, uname FROM users WHERE id = ? LIMIT 1',
 		undef, $session->{uid}
