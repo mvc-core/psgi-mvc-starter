@@ -19,7 +19,7 @@ $.data => sub { {} }
 	<h1 class="text-4xl font-bold text-blue-600 px-4 py-2">Konfiguration 🚗</h1>
 
 	<p>
-		<% substr($self->data->{P}->get_secret()->{secret}, 0, 4) . '...' %>
+		<tt><% substr($self->data->{P}->get_secret()->{secret}, 0, 4) . '...' %></tt>
 	</p>
 
 <p class="text-left mb-3">
@@ -38,6 +38,11 @@ $.data => sub { {} }
 %	}
 </p>
 <hr>
+
+% foreach (sort keys %ENV) {
+%	next if /pass/i;
+	XX <% $_ %> = <% $ENV{$_} %><br>
+% }
 
 % my $p__foo = $self->data->{P}->_foo();
 % use Encode qw(encode_utf8);
