@@ -29,6 +29,8 @@ sub index {
     if ( $user ) {
     }
 
+    my $msg = "XX asdf / logout";
+
     $result->{XX_is_logged_in} = MyApp::Service::Auth::_is_logged_in();
 
     my %cookies = map {
@@ -40,6 +42,7 @@ sub index {
 
     return {
         name    => 'Controller::Login: ' . $value,
+	msg     => $msg,
 	env     => $env,
 	cookies => $cookies,
 	result  => $result,
