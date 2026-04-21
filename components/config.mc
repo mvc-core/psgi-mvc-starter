@@ -28,8 +28,6 @@ $.data => sub { {} }
 	via MyApp::Service::Auth::_is_logged_in( ) &rarr; "<% $self->data->{is_logged_in} %>"
 </p>
 
-<& partials/inc_debug_data.html, data => $self->data &>
-
 <p class="text-left mb-3">
 %	if ( $self->data->{msg} ) {
 		<b><% $self->data->{msg} %></b><br>
@@ -55,6 +53,8 @@ $.data => sub { {} }
 %	}
 </div>
 </%doc>
+
+<& partials/inc_debug_data.html, data => $self->data &>
 
 <& partials/footer.mc, data=>$self->data &>
 
