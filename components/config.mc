@@ -39,10 +39,12 @@ $.data => sub { {} }
 </p>
 <hr>
 
+<p class="text-left mt-5 mb-3">
 % foreach (sort keys %ENV) {
 %	next if /pass/i;
-	XX <% $_ %> = <% $ENV{$_} %><br>
+	[ENV] - <b><% $_ %></b> = <% $ENV{$_} %><br>
 % }
+</p>
 
 % my $p__foo = $self->data->{P}->_foo();
 % use Encode qw(encode_utf8);
