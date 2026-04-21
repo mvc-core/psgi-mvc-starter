@@ -60,11 +60,12 @@ sub index {
 		$session->{is_logged_in} = 1;
 	}
 
-	# XXX $msg = "XX [authen] - auth rc = $result->{auth}->{rc} / UID $result->{auth}->{uid}";
 	push(@msgs, "XX [authen] - auth rc = $result->{auth}->{rc} / UID $result->{auth}->{uid}");
     }
 
     $result->{XX_Auth__is_logged_in} = MyApp::Service::Auth::_is_logged_in($env);
+
+    $result->{perm} = MyApp::Service::Auth::perm(env => $env);
 
     my %cookies = map {
         my ($k, $v) = split /=/, $_, 2;
