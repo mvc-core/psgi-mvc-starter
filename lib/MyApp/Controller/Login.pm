@@ -20,6 +20,7 @@ sub index {
     my $P       = ScreenPoint::Prism->new(dbh => $dbh);
 
     my $result;
+    my $msg   = '';
     my $token = 'secret';
     
     my $api_endpoint = 'https://psgi.h3.zspace.ch/api/secure';
@@ -46,11 +47,13 @@ sub index {
         $session->{user} = $params->{user};
         $session->{is_logged_in} = 42;
 
-    	$result->{QQQ_secret} = substr($P->get_secret()->{secret}, 0, 5) . '...';
+	# XX $result->{QQQ_secret} = substr($P->get_secret()->{secret}, 0, 5) . '...';
 
-	$result->{ZZ_auth} = MyApp::Service::Auth::authen(
+	$result->{auth} = MyApp::Service::Auth::authen(
 		user => $params->{user}, pass => $params->{pass}
-	)->{msg};
+	);
+
+	$msg = "XX auth rc = $result->{auth}->{rc}";
     }
 
     $result->{XX_Auth__is_logged_in} = MyApp::Service::Auth::_is_logged_in($env);
@@ -68,6 +71,7 @@ sub index {
 	env     => $env,
 	cookies => $cookies,
 	result  => $result,
+	msg     => $msg,
 	xy      => "Frisch v/<b>Controller</b> lib/MyApp/Controller/Login. $params->{user}"
     };
 }
