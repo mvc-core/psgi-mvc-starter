@@ -6,6 +6,8 @@ use warnings;
 
 use Crypt::Argon2 qw/argon2id_pass argon2id_verify/;
 
+my $dbh  = MyApp::DB::get_dbh();
+
 sub authen {
 	my %args = @_;
 
@@ -44,9 +46,12 @@ sub perm {
 
 	my $session = $env->{'psgix.session'};
 
-	$res{XX} = "aha$$";
+	($res{is_admin}, $res{is_devel}) = $dbh->selectrow_array(
+		'SELECT is_admin, is_devel FROM users WHERE id = ? LIMIT 1',
+		undef, $session->{uid}
+	);
 
-	# XXX my %foo = ( aha => '604041xy');
+	$res{uid} = $session->{uid};
 
 	return \%res;
 }
