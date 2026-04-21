@@ -54,6 +54,10 @@ $.data => sub { {} }
 <hr>
 
 <p class="text-left mb-3">
+%	unless (defined $self->data->{cookies}) {
+		<p class="mb-4 text-sm">Derzeit keine <a class="text-blue-800" href="/foo/set-cookie">Cookies</a>.</p>
+%	}
+
 %       foreach (sort keys %{ $self->data->{cookies} }) {
                 [🍪 Cookie] <b><% $_ %></b> = <% substr($self->data->{cookies}->{$_}, 0, 66) %><br>
 %       }
