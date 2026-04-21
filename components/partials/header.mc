@@ -2,8 +2,9 @@
 $.data => sub { {} }
 </%args>
 <div class="fixed top-25 left-0 w-full bg-white border-t border-gray-200 px-4 py-2 z-50">
-    Fusszeile &ndash; Session-User: <% $self->data->{_session}{user} // '(nicht eingeloggt)' %>
-    &mdash; xy = "<% $self->data->{xy} // '' %>"<br><br>
+    Kopf &ndash; Session-User: <% $self->data->{_session}{user} // '(nicht eingeloggt)' %>
+% # XXX    &mdash; xy = "<% $self->data->{xy} // '' %>"
+    <br><br>
 
     <div class="text-blue-800">
 	<a href="/"><b>Start</b></a> &ndash;
