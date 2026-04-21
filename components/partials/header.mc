@@ -1,7 +1,7 @@
 <%args>
 $.data => sub { {} }
 </%args>
-<div class="fixed top-25 left-0 w-full bg-white border-t border-gray-200 px-4 py-2 z-50">
+<div class="fixed top-0 left-0 w-full bg-white border-b border-gray-200 px-4 py-2 z-50">
     Kopf &ndash; Session-User: <% $self->data->{_session}{user} // '(nicht eingeloggt)' %>
 % # XXX    &mdash; xy = "<% $self->data->{xy} // '' %>"
     <br><br>
