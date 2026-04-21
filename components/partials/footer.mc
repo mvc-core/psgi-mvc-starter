@@ -1,7 +1,7 @@
 <%args>
 $.data => sub { {} }
 </%args>
-<footer class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 px-4 py-2 z-50">
+<footer class="fixed bottom-2 left-0 w-full bg-white border-t border-gray-200 px-4 py-2 z-50">
     Fusszeile &ndash; Session-User: <% $self->data->{_session}{user} // '(nicht eingeloggt)' %>
     &mdash; xy = "<% $self->data->{xy} // '' %>"<br><br>
 
@@ -20,11 +20,6 @@ $.data => sub { {} }
 
 <%doc>
 XXX:
-	<p class="mt-3 text-left text-sm">
-%	foreach (sort keys %{ $self->data }) {
-		[data] - <b><% $_ %></b> = <% $self->data->{$_} %><br>
-%	}
-	</p>
 /XXX
 </%doc>
 
