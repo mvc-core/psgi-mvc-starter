@@ -36,9 +36,9 @@ $.data => sub { {} }
 <hr>
 
 % my $p__foo = $self->data->{P}->_foo();
+% use Encode qw(encode_utf8);
 <p class="text-left mt-3">
 % foreach (sort keys %$p__foo) {
-%	use Encode qw(encode_utf8);
 %	my $value = encode_utf8( $p__foo->{$_} );
 	[Prismado / _foo] - <b><% $_ %></b> = <% $value %><br>
 % }
