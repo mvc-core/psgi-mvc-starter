@@ -29,7 +29,6 @@ sub index {
         $k =~ s/^\s+|\s+$//g;
         $k => $v // ''
     } split /;\s*/, $env->{HTTP_COOKIE} // '';
-    # XXX my $cookies = \%cookies;
 
     return {
         name    => 'Controller::Crypt',
