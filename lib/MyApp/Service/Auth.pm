@@ -16,12 +16,13 @@ sub authen {
 	my $pass = $args{pass};
 	my $dbh  = MyApp::DB::get_dbh();
 
-	my ($password_hash) = $dbh->selectrow_array("SELECT password_hash FROM users where id=1");
+	my ($password_hash) = $dbh->selectrow_array("SELECT password_hash FROM users where uname='$user' limit 1");
+	# XXX my ($password_hash) = $dbh->selectrow_array("SELECT password_hash FROM users where id=1");
 
 	my $granted = my $f_argon_error = 0;
 	eval { $granted = argon2id_verify($password_hash, $pass); };
 
-	$res{msg} = "XX $user / granted=$granted / $password_hash " . substr($pass, 0, 4) . '...';
+	$res{msg} = "XX $user / granted=$granted / " . substr($pass, 0, 4) . '...';
 
 	return \%res;
 }
