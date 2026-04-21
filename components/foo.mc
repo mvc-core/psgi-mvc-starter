@@ -42,9 +42,11 @@ $.data => sub { {} }
 <hr>
 
 % my $p__foo = $self->data->{p}->foo();
+<p class="text-left mt-3">
 % foreach (sort keys %$p__foo) {
 	[Prismado / foo] - <b><% $_ %></b> = <% $p__foo->{$_} %><br>
 % }
+</p>
 
 <div class="mt-3 text-left columns-2 gap-5 break-all">
 %	foreach (sort keys %{ $self->data->{env} }) {
