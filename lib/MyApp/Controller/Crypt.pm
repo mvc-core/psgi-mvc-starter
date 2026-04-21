@@ -39,6 +39,7 @@ sub index {
     return {
         name    => 'Controller::Crypt',
 	P       => $P,
+	XXX     => $P->get_secret()->{secret},
 	env     => $env,
 	cgi     => $params,
 	result  => $result,

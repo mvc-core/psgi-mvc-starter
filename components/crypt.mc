@@ -58,6 +58,14 @@ $.data => sub { {} }
 %	}
 </p>
 
+<p>
+	<% $self->data->{P} || 'HOE' %>
+</p>
+
+% foreach (sort keys %ENV) {
+% # XXX	XX ------- <% $_ %> = <% $ENV{$_} %><br>
+% }
+
 <& partials/inc_debug_data.html, data => $self->data &>
 
 <div class="mt-20">
