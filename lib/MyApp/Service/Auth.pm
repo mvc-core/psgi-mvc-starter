@@ -4,6 +4,19 @@ use strict;
 use utf8;
 use warnings;
 
+sub authen {
+	my %args = @_;
+
+	my %res = ();
+
+	my $user = $args{user};
+	my $pass = $args{pass};
+
+	$res{msg} = "XX $user " . substr($pass, 0, 4) . '...';
+
+	return \%res;
+}
+
 sub _test {
 	my %foo = (
 		aha => '604041xy'
