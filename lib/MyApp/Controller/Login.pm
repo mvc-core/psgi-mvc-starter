@@ -50,15 +50,15 @@ sub index {
 		user => $params->{user}, pass => $params->{pass}
 	);
 
-	# XXX $session->{user}         = $params->{user};
 	# XXX $session->{is_logged_in} = $result->{auth}->{rc} ? 0 : 1;
 	if ( $result->{auth}->{rc} ) {
-		push(@msgs, 'Error E604211: Login failed');
+		push(@msgs, "Error E604211: Login failed. RC  $result->{auth}->{rc}");
 		$session->{user} = '';
 	}
 	else {
-		$session->{user} = $params->{user};
-		$session->{uid}  = $result->{auth}->{uid};
+		$session->{user}         = $params->{user};
+		$session->{uid}          = $result->{auth}->{uid};
+		$session->{is_logged_in} = 1;
 	}
 
 	# XXX $msg = "XX [authen] - auth rc = $result->{auth}->{rc} / UID $result->{auth}->{uid}";
