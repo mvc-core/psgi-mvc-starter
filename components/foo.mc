@@ -10,7 +10,7 @@ $.data => sub { {} }
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
-<body class="min-h-screen flex items-center justify-center bg-gray-100 pt-24">
+<body class="min-h-screen flex items-start justify-center bg-gray-100 pt-28">
 
   <& partials/header.mc, data => $self->data &>
 
