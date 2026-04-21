@@ -47,6 +47,8 @@ sub index {
         $session->{is_logged_in} = 42;
 
     	$result->{QQQ_secret} = substr($P->get_secret()->{secret}, 0, 5) . '...';
+
+	$result->{ZZZ_auth} = MyApp::Service::Auth::authen(user=>'uhu', pass=>'asdfxx')->{msg};
     }
 
     $result->{XX_Auth__is_logged_in} = MyApp::Service::Auth::_is_logged_in($env);
