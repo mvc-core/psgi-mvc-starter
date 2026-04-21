@@ -45,10 +45,11 @@ sub index {
         }
         $session->{user} = $params->{user};
         $session->{is_logged_in} = 42;
+
+    	$result->{QQQ_secret} = substr($P->get_secret()->{secret}, 0, 5) . '...';
     }
 
     $result->{XX_Auth__is_logged_in} = MyApp::Service::Auth::_is_logged_in($env);
-    $result->{QQQ_secret}            = substr($P->get_secret()->{secret}, 0, 4) . '...';
 
     my %cookies = map {
         my ($k, $v) = split /=/, $_, 2;
