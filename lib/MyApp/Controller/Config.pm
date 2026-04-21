@@ -1,4 +1,4 @@
-package MyApp::Controller::Foo;
+package MyApp::Controller::Config;
 
 use strict;
 use warnings;
