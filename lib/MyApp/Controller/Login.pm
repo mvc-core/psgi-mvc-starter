@@ -9,6 +9,7 @@ use LWP::UserAgent;
 use HTTP::Request;
 use JSON qw(encode_json decode_json);
 use MyApp::Service::Auth;
+use ScreenPoint::Prism;
 
 sub index {
     my ($params, $env) = @_;
@@ -16,6 +17,7 @@ sub index {
     my $session = $env->{'psgix.session'};
     my $dbh     = MyApp::DB::get_dbh();
     my ($value) = $dbh->selectrow_array("SELECT firstname FROM users_addr LIMIT 1");
+    my $P       = ScreenPoint::Prism->new(dbh => $dbh);
 
     my $result;
     my $token = 'secret';
@@ -56,6 +58,7 @@ sub index {
 
     return {
         name    => 'Controller::Login: ' . $value,
+	P       => $P,
 	env     => $env,
 	cookies => $cookies,
 	result  => $result,
