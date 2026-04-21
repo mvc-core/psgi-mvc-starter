@@ -6,10 +6,7 @@ use warnings;
 use POSIX qw(strftime);
 use MyApp::DB;
 use MyApp::Service::Auth;
-# XXX use Crypt::Lite;
 use ScreenPoint::Prism;
-
-# XXX my $crypt = Crypt::Lite->new( encoding => 'hex8 ');
 
 sub index {
     my ($params, $env) = @_;
@@ -20,6 +17,8 @@ sub index {
 
     my @msgs = ();
     my @set_cookies = ();
+
+    push(@msgs, 'N604211: Controller: Config');
 
     my ($value) = $dbh->selectrow_array("SELECT firstname FROM users_addr LIMIT 1");
 
@@ -46,7 +45,6 @@ sub index {
         env         => $env,
 	is_logged_in => MyApp::Service::Auth::_is_logged_in($env),
         cookies     => $cookies,
-	# XXX xy          => "hhhDie PID ist jetzt gerade $$ / " . $crypt->encrypt('foo', 'bar'),
         _set_cookies => \@set_cookies,
     };
 }
