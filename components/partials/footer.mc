@@ -3,7 +3,8 @@ $.data => sub { {} }
 </%args>
 <footer class="fixed bottom-2 left-0 w-full bg-white border-t border-gray-200 px-4 py-2 z-50">
     Fusszeile &ndash; Session-User: <% $self->data->{_session}{user} // '(nicht eingeloggt)' %>
-    &mdash; xy = "<% $self->data->{xy} // '' %>"<br><br>
+% # XXX    &mdash; xy = "<% $self->data->{xy} // '' %>"
+    <br>
 
     <div class="text-blue-800">
 	<a href="/"><b>Start</b></a> &ndash;
@@ -17,10 +18,5 @@ $.data => sub { {} }
 		[ <a target="_blank" href="https://github.com/mvc-core/psgi-mvc-starter">GitHub</a> ]
 	</span>
     </div>
-
-<%doc>
-XXX:
-/XXX
-</%doc>
 
 </footer>
