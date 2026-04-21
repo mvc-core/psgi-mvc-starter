@@ -18,9 +18,14 @@ $.data => sub { {} }
 	</span>
     </div>
 
+<%doc>
+XXX:
 	<p class="mt-3 text-left text-sm">
 %	foreach (sort keys %{ $self->data }) {
 		[data] - <b><% $_ %></b> = <% $self->data->{$_} %><br>
 %	}
 	</p>
+/XXX
+</%doc>
+
 </footer>

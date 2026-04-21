@@ -61,11 +61,16 @@ $.data => sub { {} }
       </li>
     </ul>
 
+    <& partials/inc_debug_data.html, data => $self->data &>
+<%doc>
+XXX:
     <p class="mt-10 text-gray-700 text-left">
 %	foreach (sort keys %{ $self->data }) {
 		[data] - <b><% $_ %></b> = <% $self->data->{$_} %><br>
 %	}
     </p>
+/XXX
+</%doc>
 
     <p class="mt-10 text-gray-700 XXXtext-left">
 	<& partials/footer.mc, data=>$self->data &>
