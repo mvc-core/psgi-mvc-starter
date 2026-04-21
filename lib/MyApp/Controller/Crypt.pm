@@ -24,11 +24,19 @@ sub index {
 	);
     }
 
+    my %cookies = map {
+        my ($k, $v) = split /=/, $_, 2;
+        $k =~ s/^\s+|\s+$//g;
+        $k => $v // ''
+    } split /;\s*/, $env->{HTTP_COOKIE} // '';
+    # XXX my $cookies = \%cookies;
+
     return {
         name    => 'Controller::Crypt',
 	env     => $env,
 	cgi     => $params,
 	result  => $result,
+	cookies => \%cookies,
 	xy      => "Frisch v/<b>Controller</b> lib/MyApp/Controller/Crypt. $params->{in}"
     };
 }
