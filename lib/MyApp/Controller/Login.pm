@@ -21,6 +21,7 @@ sub index {
 
     my $result;
     my $msg   = '';
+    my @msgs  = ();
     my $token = 'secret';
     
     my $api_endpoint = 'https://psgi.h3.zspace.ch/api/secure';
@@ -49,10 +50,19 @@ sub index {
 		user => $params->{user}, pass => $params->{pass}
 	);
 
-        $session->{user}         = $params->{user};
-        $session->{is_logged_in} = $result->{auth}->{rc} ? 0 : 1;
+	# XXX $session->{user}         = $params->{user};
+	# XXX $session->{is_logged_in} = $result->{auth}->{rc} ? 0 : 1;
+	if ( $result->{auth}->{rc} ) {
+		push(@msgs, 'Error E604211: Login failed');
+		$session->{user} = '';
+	}
+	else {
+		$session->{user} = $params->{user};
+		$session->{uid}  = $result->{auth}->{uid};
+	}
 
-	$msg = "XX [authen] - auth rc = $result->{auth}->{rc} / UID $result->{auth}->{uid}";
+	# XXX $msg = "XX [authen] - auth rc = $result->{auth}->{rc} / UID $result->{auth}->{uid}";
+	push(@msgs, "XX [authen] - auth rc = $result->{auth}->{rc} / UID $result->{auth}->{uid}");
     }
 
     $result->{XX_Auth__is_logged_in} = MyApp::Service::Auth::_is_logged_in($env);
@@ -70,7 +80,7 @@ sub index {
 	env     => $env,
 	cookies => $cookies,
 	result  => $result,
-	msg     => $msg,
+	msg     => (join '<br>', @msgs),
 	xy      => "Frisch v/<b>Controller</b> lib/MyApp/Controller/Login. $params->{user}"
     };
 }
