@@ -59,12 +59,8 @@ $.data => sub { {} }
 </p>
 
 <p>
-	<% $self->data->{P} || 'HOE' %>
+	<% $self->data->{P}->get_secret()->{secret} || 'HOE' %>
 </p>
-
-% foreach (sort keys %ENV) {
-% # XXX	XX ------- <% $_ %> = <% $ENV{$_} %><br>
-% }
 
 <& partials/inc_debug_data.html, data => $self->data &>
 
