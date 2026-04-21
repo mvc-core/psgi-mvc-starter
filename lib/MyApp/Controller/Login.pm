@@ -44,16 +44,15 @@ sub index {
         } else {
             $result = { errmsg => $res->status_line };
         }
-        $session->{user} = $params->{user};
-        $session->{is_logged_in} = 42;
-
-	# XX $result->{QQQ_secret} = substr($P->get_secret()->{secret}, 0, 5) . '...';
 
 	$result->{auth} = MyApp::Service::Auth::authen(
 		user => $params->{user}, pass => $params->{pass}
 	);
 
-	$msg = "XX auth rc = $result->{auth}->{rc}";
+        $session->{user}         = $params->{user};
+        $session->{is_logged_in} = $result->{auth}->{rc} ? 0 : 1;
+
+	$msg = "XX [authen] - auth rc = $result->{auth}->{rc}";
     }
 
     $result->{XX_Auth__is_logged_in} = MyApp::Service::Auth::_is_logged_in($env);
