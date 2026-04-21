@@ -38,8 +38,8 @@ $.data => sub { {} }
 % my $p__foo = $self->data->{P}->_foo();
 <p class="text-left mt-3">
 % foreach (sort keys %$p__foo) {
-	[Prismado / _foo] - <b><% $_ %></b> = 'XXX'<br>
-% #	[Prismado / foo] - <b><% $_ %></b> = <% $p__foo->{$_} %><br>
+%	my $value = substr($p__foo->{$_}, 0, 2) . '...';
+	[Prismado / _foo] - <b><% $_ %></b> = <% $value %><br>
 % }
 </p>
 
