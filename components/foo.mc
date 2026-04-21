@@ -12,6 +12,8 @@ $.data => sub { {} }
 
 <body class="min-h-screen flex items-center justify-center bg-gray-100">
 
+  <& partials/header.mc, data => $self->data &>
+
   <div class="text-center w-full max-w-screen-lg px-4 overflow-x-auto">
 
 	<h1 class="fixed top-0 left-0 w-full text-4xl font-bold text-blue-600 bg-gray-100 px-4 py-2 z-50">I am Foo<br>
