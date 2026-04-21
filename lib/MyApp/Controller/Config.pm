@@ -13,7 +13,7 @@ sub index {
 
     my $dbh = MyApp::DB::get_dbh();
 
-    my $p   = ScreenPoint::Prism->new(dbh => $dbh);
+    my $P   = ScreenPoint::Prism->new(dbh => $dbh);
 
     my @msgs = ();
     my @set_cookies = ();
@@ -41,7 +41,7 @@ sub index {
     return {
         name        => "$value via Controller Foo",
         msg         => $msg,
-	p           => $p,
+	P           => $P,
         env         => $env,
 	is_logged_in => MyApp::Service::Auth::_is_logged_in($env),
         cookies     => $cookies,

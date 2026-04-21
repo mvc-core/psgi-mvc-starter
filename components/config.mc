@@ -35,14 +35,15 @@ $.data => sub { {} }
 </p>
 <hr>
 
-<%doc>
+% # <%doc>
 % my $p__foo = $self->data->{P}->_foo();
 <p class="text-left mt-3">
 % foreach (sort keys %$p__foo) {
-	[Prismado / foo] - <b><% $_ %></b> = <% $p__foo->{$_} %><br>
+	[Prismado / foo] - <b><% $_ %></b> = 'XXX'<br>
+% #	[Prismado / foo] - <b><% $_ %></b> = <% $p__foo->{$_} %><br>
 % }
 </p>
-</%doc>
+% # </%doc>
 
 <%doc>
 <div class="mt-3 text-left columns-2 gap-5 break-all">
