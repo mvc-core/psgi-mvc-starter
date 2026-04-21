@@ -5,7 +5,6 @@ use utf8;
 use warnings;
 
 use Crypt::Argon2 qw/argon2id_pass argon2id_verify/;
-# use Bytes::Random::Secure qw(random_bytes random_bytes_base64 random_bytes_hex);
 
 sub authen {
 	my %args = @_;
@@ -16,12 +15,15 @@ sub authen {
 	my $pass = $args{pass};
 	my $dbh  = MyApp::DB::get_dbh();
 
-	my ($password_hash) = $dbh->selectrow_array('SELECT password_hash FROM users WHERE uname = ? LIMIT 1', undef, $user);
+	my ($password_hash) = $dbh->selectrow_array(
+		'SELECT password_hash FROM users WHERE uname = ? LIMIT 1',
+		undef, $user
+	);
 
 	my $granted = my $f_argon_error = 0;
 	eval { $granted = argon2id_verify($password_hash, $pass); };
 
-	$res{msg} = "XX $user / granted=$granted / " . substr($pass, 0, 4) . '...';
+	$res{msg} = "XX ------ granted=$granted";
 
 	return \%res;
 }
