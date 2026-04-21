@@ -35,6 +35,9 @@ $.data => sub { {} }
 <br>
 
 <p class="text-left mb-3">
+%	if ($self->data->{msg}) {
+		<% $self->data->{msg} %><br>
+%	}
 % foreach (sort keys %{ $self->data->{result} }) {
 	[result / REST API] - <b><% $_ %></b> &larr; <tt class="text-lg"><% $self->data->{result}->{$_} %></tt><br>
 % }
