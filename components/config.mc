@@ -16,8 +16,8 @@ $.data => sub { {} }
 
   <div class="text-center w-full max-w-screen-lg px-4 overflow-x-auto">
 
-	<h1 class="text-4xl font-bold text-blue-600 px-4 py-2">I am Foo<br>
-	Hello <% $self->data->{name} // 'Anonymous' %> 🚗!</h1>
+	<h1 class="text-4xl font-bold text-blue-600 px-4 py-2">Konfiguration 🚗</h1>
+% # XXX	Hello <% $self->data->{name} // 'Anonymous' %> 🚗!</h1>
 
 <p class="text-left mb-3">
 %	unless (%{ $self->data->{_session} }) {
