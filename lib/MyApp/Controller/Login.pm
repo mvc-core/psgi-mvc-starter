@@ -50,7 +50,6 @@ sub index {
 		user => $params->{user}, pass => $params->{pass}
 	);
 
-	# XXX $session->{is_logged_in} = $result->{auth}->{rc} ? 0 : 1;
 	if ( $result->{auth}->{rc} ) {
 		push(@msgs, "Error E604211: Login failed. RC  $result->{auth}->{rc}");
 		$session->{user} = '';
