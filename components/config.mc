@@ -17,7 +17,6 @@ $.data => sub { {} }
   <div class="text-center w-full max-w-screen-lg px-4 overflow-x-auto">
 
 	<h1 class="text-4xl font-bold text-blue-600 px-4 py-2">Konfiguration 🚗</h1>
-% # XXX	Hello <% $self->data->{name} // 'Anonymous' %> 🚗!</h1>
 
 <p class="text-left mb-3">
 %	unless (%{ $self->data->{_session} }) {
@@ -35,15 +34,11 @@ $.data => sub { {} }
 %	if ( $self->data->{msg} ) {
 		<b><% $self->data->{msg} %></b><br>
 %	}
-<%doc>
-XXX:
-/XXX
-</%doc>
 </p>
 <hr>
 
 <%doc>
-% my $p__foo = $self->data->{p}->foo();
+% my $p__foo = $self->data->{P}->_foo();
 <p class="text-left mt-3">
 % foreach (sort keys %$p__foo) {
 	[Prismado / foo] - <b><% $_ %></b> = <% $p__foo->{$_} %><br>
@@ -51,6 +46,7 @@ XXX:
 </p>
 </%doc>
 
+<%doc>
 <div class="mt-3 text-left columns-2 gap-5 break-all">
 %	foreach (sort keys %{ $self->data->{env} }) {
 %		next unless length( $self->data->{env}->{$_} );
@@ -58,6 +54,7 @@ XXX:
 		[env] <b><% $_ %></b> = <% substr($self->data->{env}->{$_}, 0, 95) %><br>
 %	}
 </div>
+</%doc>
 
 <& partials/footer.mc, data=>$self->data &>
 
