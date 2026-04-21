@@ -18,6 +18,9 @@ $.data => sub { {} }
 	Hello <% $self->data->{name} // 'Anonymous' %> 🚗!</h1>
 
 <p class="text-left mb-3">
+%	unless (%{ $self->data->{_session} }) {
+		<p class="text-left text-sm">Derzeit keine Session-Daten.</p>
+%	}
 %	foreach (keys %{ $self->data->{_session} }) {
         	[Sess] <b><% $_ %></b> = <% $self->data->{_session}->{$_} %><br>
 %	}
