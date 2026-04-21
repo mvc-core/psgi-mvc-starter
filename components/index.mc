@@ -59,16 +59,19 @@ $.data => sub { {} }
           <span class="text-blue-500">&#9654;</span> Testfunktionen
         </a>
       </li>
+
+      <li>
+        <a href="/config"
+           class="flex items-center gap-2 rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700 transition-colors shadow-sm">
+          <span class="text-blue-500">&#9654;</span> Konfiguration
+        </a>
+      </li>
+
     </ul>
 
     <& partials/inc_debug_data.html, data => $self->data &>
 <%doc>
 XXX:
-    <p class="mt-10 text-gray-700 text-left">
-%	foreach (sort keys %{ $self->data }) {
-		[data] - <b><% $_ %></b> = <% $self->data->{$_} %><br>
-%	}
-    </p>
 /XXX
 </%doc>
 
