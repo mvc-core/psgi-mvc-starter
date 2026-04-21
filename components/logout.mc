@@ -23,6 +23,10 @@ $.data => sub { {} }
 	<h3 class="mt-8"><% $self->data->{msg} %></h3>
 % }
 
+<p>
+	<a href="/login">Sign-in</a>
+</p>
+
 <%doc>
 XXX:
 <form method="post" class="flex flex-col gap-3 w-72 mx-auto mt-6">
