@@ -22,7 +22,10 @@ $.data => sub { {} }
 	<div class="text-left mt-15 mb-8">
 		<form method="post">
 			<input type="file">
-			<input type="submit" value="Upload">
+			<input type="submit" value="Upload"
+				class="flex ZZitems-center gap-2 rounded-lg border border-gray-200 bg-blue-500
+				px-4 py-2 text-sm font-medium text-white
+				hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700 transition-colors shadow-sm">
 		</form>
 	</div>
 
