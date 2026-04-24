@@ -112,7 +112,7 @@ my $app = sub {
     $path = '/index' if $is_root;
 
     # Statische Assets direkt mit 404 abweisen
-    if ($path =~ /\.(ico|css|js|png|jpg|gif|svg|woff2?)$/i) {
+    if ($path =~ /\.(ico|css|js|png|jpg|gif|webp|svg|woff2?)$/i) {
         return [ 404, [ 'Content-Type' => 'text/plain' ], [ 'Not found' ] ];
     }
 
@@ -180,6 +180,11 @@ my $app = sub {
 # Middleware-Stack
 # ---------------------------------------------------------------------------
 builder {
+    # Statische Dateien unter /assets/* aus public/ servieren
+    enable 'Static',
+        path => qr{^/assets/},
+        root => '/var/www/html/public/';
+
     # -----------------------------
     # API (separat gemountet)
     # -----------------------------
