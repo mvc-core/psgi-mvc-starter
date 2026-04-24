@@ -9,8 +9,6 @@ use MyApp::Service::Auth;
 use Crypt::Lite;
 use ScreenPoint::Prism;
 
-# XX my $crypt = Crypt::Lite->new( encoding => 'hex8 ');
-
 sub index {
     my ($params, $env) = @_;
 
@@ -20,6 +18,10 @@ sub index {
 
     my @msgs = ();
     my @set_cookies = ();
+
+    unless ( MyApp::Service::Auth::_is_logged_in($env) ) {
+        return { _internal_redirect => '/login' };
+    }
 
     my ($value) = $dbh->selectrow_array("SELECT firstname FROM users_addr LIMIT 1");
 
