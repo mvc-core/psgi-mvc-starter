@@ -19,6 +19,13 @@ $.data => sub { {} }
 	<h1 class="text-4xl font-bold text-blue-600 px-4 py-2">Upload<br>
 	Hello <% $self->data->{name} // 'Anonymous' %> 🚗!</h1>
 
+	<div class="text-left mt-15 mb-8">
+		<form method="post">
+			<input type="file">
+			<input type="submit" value="Upload">
+		</form>
+	</div>
+
 <p class="text-left mb-3">
 %	unless (%{ $self->data->{_session} }) {
 		<p class="text-left text-sm">Derzeit keine Session-Daten.</p>
