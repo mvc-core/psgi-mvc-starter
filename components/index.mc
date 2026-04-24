@@ -17,7 +17,7 @@ $.data => sub { {} }
   <div class="text-center w-full max-w-screen-lg px-4 overflow-x-auto">
 
   	<div class="flex justify-center">
-  		<img src="/assets/images/logos/logo_mvc_transp.webp" class="w-1/5">
+  		<img src="/assets/images/logos/logo_mvc_transp.webp" class="w-1/6">
 	</div>
 
   	<h1 class="text-4xl font-bold text-blue-600 px-4 py-2"><% $ENV{HOSTNAME} %></h1>
