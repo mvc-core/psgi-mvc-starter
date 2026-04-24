@@ -41,7 +41,7 @@ $.data => sub { {} }
 
 <p class="text-left mt-5 mb-3">
 % foreach (sort keys %ENV) {
-%	next if /pass/i;
+%	next if /pass/i or $_ eq 'OLDPWD' or $_ eq 'HOME' or $_ eq 'PATH' or $_ eq '_';
 	[ENV] - <b><% $_ %></b> = <% $ENV{$_} %><br>
 % }
 </p>
